@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.utilities.WebElementUtils;
-import com.utilities.WebPageDropdwnUtils;
+import com.utilities.GenericUtils;
 
 public class ProductPage {
     
 	WebDriver driver;
 	WebElementUtils elementutil=new WebElementUtils();
-	WebPageDropdwnUtils droputil=new WebPageDropdwnUtils();
+	GenericUtils droputil=new GenericUtils();
 	
 	@FindBy(xpath="//span[text()='Product']")
 	WebElement productlink;
@@ -22,7 +22,7 @@ public class ProductPage {
 		
 	@FindBy(xpath="//select[@id='Type']")
 	WebElement pdtype;
-	@FindBy(xpath="//input[@id='ProductCode']")
+	@FindBy(xpath="//input[@name='code']")
 	WebElement pdtcode;
 	@FindBy(xpath="//input[@id='ProductName']")
 	WebElement pdtname;

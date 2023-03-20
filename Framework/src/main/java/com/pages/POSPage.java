@@ -4,13 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.utilities.WebElementUtils;
-import com.utilities.WebPageDropdwnUtils;
+import com.utilities.GenericUtils;
 
 public class POSPage {
 
 	WebDriver driver;
 	WebElementUtils elementutils=new WebElementUtils();
-	WebPageDropdwnUtils dropdwn=new WebPageDropdwnUtils();
+	GenericUtils dropdwn=new GenericUtils();
 	
 //	@FindBy(xpath="")
 }

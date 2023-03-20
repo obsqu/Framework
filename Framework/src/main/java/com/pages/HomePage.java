@@ -8,13 +8,13 @@ import org.testng.annotations.Test;
 
 import com.utilities.BrowserUtils;
 import com.utilities.WebElementUtils;
-import com.utilities.WebPageDropdwnUtils;
+import com.utilities.GenericUtils;
 
 public class HomePage {
 	
 	WebDriver driver;
 	WebElementUtils elementutils=new WebElementUtils();
-	WebPageDropdwnUtils dropdwn=new WebPageDropdwnUtils();
+	GenericUtils dropdwn=new GenericUtils();
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	
 	@FindBy(xpath="//span[text()='POS']")

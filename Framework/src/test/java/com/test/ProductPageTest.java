@@ -58,7 +58,7 @@ public class ProductPageTest extends AutomationBase{
 	public void addProductDetials()
 	{
 		pdtpage.clickOnAddProductButton();
-		pdtpage.selectProductType("service");
+		pdtpage.selectProductType("Service");
 		pdtpage.enterProductCode("303032");
 		pdtpage.enterProductName("BBQ");
 		pdtpage.selectProductCategory("Pizza");
@@ -72,7 +72,7 @@ public class ProductPageTest extends AutomationBase{
 		pdtpage.enterProductOption("Good,Taste");
 		pdtpage.enterProductDescription("Good Quality,Super");
 		pdtpage.submitProductDetails();
-		pdtpage.closeProductDetails();
+		//pdtpage.closeProductDetails();
 		
 		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"303032","Failure Message: Product Code is not matched");
 		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBQ","Failure Message: Product Name is not matched");

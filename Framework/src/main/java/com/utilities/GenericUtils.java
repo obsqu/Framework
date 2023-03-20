@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-public class WebPageDropdwnUtils {
+public class GenericUtils {
 	
 	public void elememtSelectbyIndex(WebDriver driver,WebElement element,int value)
 	{
@@ -121,6 +121,19 @@ public class WebPageDropdwnUtils {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	public void dismissAnAlert(WebDriver driver)
+	{
+		driver.switchTo().alert().dismiss();
+	}
+	
+	public void acceptAnAlert(WebDriver driver) {
+		driver.switchTo().alert().accept();
+	}
+	
+	public void getTitleOfAlert(WebDriver driver) {
+		driver.switchTo().alert().getText();
 	}
 
 }
