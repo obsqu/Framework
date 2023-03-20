@@ -18,35 +18,26 @@ public class HomePage {
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	
 	@FindBy(xpath="//span[text()='POS']")
-	WebElement pos;
+	WebElement poslink;
 	@FindBy(xpath="//span[text()='Product']")
-	WebElement product;
+	WebElement productlink;
 	@FindBy(xpath="//span[text()='Stores']")
-	WebElement store;
+	WebElement storelink;
 	@FindBy(xpath="//span[text()='People']")
-	WebElement people;
-	@FindBy(xpath="//a[@class='dropdown-toggle flat-box waves-effect waves-block']")
-	WebElement peopleLink;
-	@FindBy(xpath="//span[text()='Waiters']")
-	WebElement waiter;
-	@FindBy(xpath="//span[text()='Customers']")
-	WebElement customer;
-	@FindBy(xpath="//span[text()='Suppliers']")
-	WebElement supplier;
+	WebElement peoplelink;
 	@FindBy(xpath="//span[text()='Sales']")
-	WebElement sale;
+	WebElement saleslink;
 	@FindBy(xpath="//span[text()='Expense']")
-	WebElement expense;
-	@FindBy(xpath="//span[text()='Categories']")
-	WebElement category;
-	@FindBy(xpath="//a[@class='dropdown-toggle flat-box waves-effect waves-block']")
+	WebElement expenselink;
+	@FindBy(xpath="//span[text()='Categories ']")
 	WebElement categorylink;
 	@FindBy(xpath="//span[text()='Setting']")
-	WebElement setting;
+	WebElement settinglink;
 	@FindBy(xpath="//span[text()='Reports']")
-	WebElement report;
-	@FindBy(xpath="//span[text()='  admin Doe']")
-	WebElement admindoe;
+	WebElement reportlink;
+	
+	@FindBy(xpath="//li[@class='dropdown language']")
+	WebElement language;
 	@FindBy(xpath="//i[@class='fa fa-sign-out fa-lg']")
 	WebElement logout;
 	
@@ -58,165 +49,86 @@ public class HomePage {
 	
 	public boolean isPosDisplayed()
 	{
-		elementutils.clickonTheElement(driver, pos);
-		return elementutils.isElementDisplayed(driver,pos);
+		boolean flag= elementutils.isElementDisplayed(driver,poslink);
+		return flag;
 	}
 	
 	public boolean isProductDisplayed()
 	{
-		elementutils.clickonTheElement(driver, product);
-		return elementutils.isElementDisplayed(driver,product);
+		
+		boolean flag=elementutils.isElementDisplayed(driver,productlink);
+		return flag;
 	}
 	
 	public boolean isStoreDisplayed()
 	{
-		elementutils.clickonTheElement(driver, store);
-		return elementutils.isElementDisplayed(driver,store);
+		
+		boolean flag= elementutils.isElementDisplayed(driver,storelink);
+		return flag;
 	}
 	
 	public boolean isPeopleDisplayed()
 	{
-		elementutils.clickonTheElement(driver, peopleLink);
-		return elementutils.isElementDisplayed(driver,people);
-	}
-	
-	public boolean isWaiterDisplayed(int indxVal)
-	{
-		elementutils.clickonTheElement(driver,peopleLink);
-		dropdwn.elememtSelectbyIndex(driver,peopleLink,indxVal);
-		return elementutils.isElementDisplayed(driver,waiter);
 		
-	}
-	
-	public boolean isCustomerDisplayed(int indxVal)
-	{
-		elementutils.clickonTheElement(driver,peopleLink);
-		dropdwn.elememtSelectbyIndex(driver, peopleLink, indxVal);
-		return elementutils.isElementDisplayed(driver,customer);
-		
-	}
-	public boolean isSupplierDisplayed(int indxVal)
-	{
-		elementutils.clickonTheElement(driver,peopleLink);
-		dropdwn.elememtSelectbyIndex(driver, peopleLink, indxVal);
-		return elementutils.isElementDisplayed(driver,supplier);
-		
+		boolean flag= elementutils.isElementDisplayed(driver,peoplelink);
+		return flag;
 	}
 	
 	public boolean isSaleDisplayed()
 	{
-		elementutils.clickonTheElement(driver, sale);	
-		return elementutils.isElementDisplayed(driver,sale);
+			
+		boolean flag=elementutils.isElementDisplayed(driver,saleslink);
+		return flag;
 	}
 	public boolean isExpenseDisplayed()
 	{
-		elementutils.clickonTheElement(driver, expense);
-		return elementutils.isElementDisplayed(driver,expense);
+		
+		boolean flag= elementutils.isElementDisplayed(driver,expenselink);
+		return flag;
 	}
 	
 	public boolean isCategoryDisplayed()
 	{
-		elementutils.clickonTheElement(driver, categorylink);
-		return elementutils.isElementDisplayed(driver,category);
-	}
-	
-	public boolean isProductCatagoryDisplayed()
-	{
-		elementutils.clickonTheElement(driver,categorylink);
 		
-		return elementutils.isElementDisplayed(driver,product);
-		
-	}
-	public boolean isExpenseCatagoryDisplayed()
-	{
-		elementutils.clickonTheElement(driver,categorylink);
-		return elementutils.isElementDisplayed(driver,expense);
-		
+		boolean flag= elementutils.isElementDisplayed(driver,categorylink);
+		return flag;
 	}
 	
 	public boolean isSettingDisplayed()
 	{
-		elementutils.clickonTheElement(driver, setting);
-		return elementutils.isElementDisplayed(driver,setting);
+		
+		boolean flag=elementutils.isElementDisplayed(driver,settinglink);
+		return flag;
 	}
 	
 	public boolean isReportDisplayed()
 	{
-		elementutils.clickonTheElement(driver, report);
-		return elementutils.isElementDisplayed(driver,report);
+		
+		boolean flag=elementutils.isElementDisplayed(driver,reportlink);
+		return flag;
 	}
-	
-	public boolean isAdmindoeDisplayed()
+	public boolean isLanguageDisplayed()
 	{
-		elementutils.clickonTheElement(driver, admindoe);
-		return elementutils.isElementDisplayed(driver,admindoe);
+		
+		boolean flag=elementutils.isElementDisplayed(driver,language);
+		return flag;
 	}
-	
 	public boolean isLogoutDisplayed()
 	{
-		elementutils.clickonTheElement(driver, logout);
-		return elementutils.isElementDisplayed(driver,logout);
+		
+		boolean flag= elementutils.isElementDisplayed(driver,logout);
+		return flag;
 	}
 	
-	/*public void clickPosOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, pos);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickProductOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, product);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickStoreOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, store);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickPeopleOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, people);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickSaleOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, sale);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickExpenseOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, expense);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickCategoryOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, category);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickSettingOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, setting);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickreportOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, report);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
-	}
-	public void clickAdminOnHomePage()
-	{
-		elementutils.clickonTheElement(driver, admindoe);
-		brwsrUtil.navigateBacktoPreviousPage(driver);
+	
+	
+	/*public HomePage navigateToPosPage() {
+		elementutils.clickonTheElement(driver, poslink);
+		return new HomePage(driver);
 	}*/
 	
-	
-	public HomePage navigateToPosPage() {
-		elementutils.clickonTheElement(driver, pos);
-		return new HomePage(driver);
-	}
-	
    public ProductPage navigateToPdtPage() {
-	     elementutils.clickonTheElement(driver, product);
+	     elementutils.clickonTheElement(driver, productlink);
 	    return new ProductPage(driver);
 	}
 

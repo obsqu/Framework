@@ -23,11 +23,11 @@ public class AutomationBase {
 			break;
 			
 		case "edge":
-			launchChromeBrowser();
+			launchEdgeBrowser();
 			break;
 			
 		case "firefox":
-			launchChromeBrowser();
+			launchFireFoxBrowser();
 			break;	
 		default:
 			//System.out.println(AutomationConsttants.CHECKBROWSER_MESSAGE);

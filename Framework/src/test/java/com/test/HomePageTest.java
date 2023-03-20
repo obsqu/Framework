@@ -1,5 +1,6 @@
 package com.test;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import org.checkerframework.checker.units.qual.h;
@@ -14,6 +15,7 @@ import com.base.AutomationBase;
 import com.pages.HomePage;
 import com.pages.LoginPage;
 import com.utilities.BrowserUtils;
+import com.utilities.PropertyUtil;
 import com.utilities.WebElementUtils;
 
 public class HomePageTest extends AutomationBase{
@@ -23,40 +25,29 @@ public class HomePageTest extends AutomationBase{
 	HomePage homepg;
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	WebElementUtils elementutil=new WebElementUtils();
-	
+	PropertyUtil property=new PropertyUtil();
 	
 	@BeforeMethod
-	public void preRun()
+	public void preRun() throws IOException
 	{
-		driver=getDriver();
 		
+       driver=getDriver();
+		
+		homepg=new HomePage(driver);
 		
 		brwsrUtil.launchUrl(driver,"https://qalegend.com/restaurant/");
 		loginpg=new LoginPage(driver);
 		homepg=loginpg.login("admin","password");
 	}
 	
-	/*@Test
-	public void checkingIsClickableMenus()
-	{
-		homepg.clickPosOnHomePage();
-		homepg.clickProductOnHomePage();
-		homepg.clickStoreOnHomePage();
-		homepg.clickPeopleOnHomePage();
-		homepg.clickSaleOnHomePage();
-		homepg.clickExpenseOnHomePage();
-		homepg.clickCategoryOnHomePage();
-		homepg.clickSettingOnHomePage();
-		homepg.clickreportOnHomePage();
-		homepg.clickAdminOnHomePage();
-	}*/
+	
 	
 	@Test
 	public void ValidatetheMenuItemsDisplayedonTheHomePage()
 	{
 		SoftAssert soft=new SoftAssert();
 		boolean flagpos=homepg.isPosDisplayed();
-		soft.assertTrue(flagpos,"Fail: POS is not displayed");
+		soft.assertTrue(flagpos,"Fail: POS Link is not displayed");
 		
 		boolean flagpdt=homepg.isProductDisplayed();
 		soft.assertTrue(flagpdt,"Fail: Product link is not displayed");
@@ -67,15 +58,6 @@ public class HomePageTest extends AutomationBase{
 		boolean flagpepl=homepg.isPeopleDisplayed();
 		soft.assertTrue(flagpepl,"Fail: People link is not displayed");
 	
-		/*boolean flagwaiter=homepg.isWaiterDisplayed(0);
-		soft.assertTrue(flagwaiter,"Fail: Waiter link under people is not displayed");
-		
-		boolean flagcustmr=homepg.isCustomerDisplayed(1);
-		soft.assertTrue(flagcustmr,"Fail: Customer link under people is not displayed");
-		
-		boolean flagsuplr=homepg.isSupplierDisplayed(2);
-		soft.assertTrue(flagsuplr,"Fail: Supplier link under people is not displayed");*/
-		
 		boolean flagsale=homepg.isSaleDisplayed();
 		soft.assertTrue(flagsale,"Fail: Sale link is not displayed");
 		
@@ -91,9 +73,9 @@ public class HomePageTest extends AutomationBase{
 		boolean flagrept=homepg.isReportDisplayed();
 		soft.assertTrue(flagrept,"Fail: Report link is not displayed");
 		
-		boolean flagadmindoe=homepg.isAdmindoeDisplayed();
-		soft.assertTrue(flagadmindoe,"Fail: AdminDoe link is not displayed");
-		
+		boolean flaglang=homepg.isReportDisplayed();
+		soft.assertTrue(flaglang,"Fail: Language link is not displayed");
+				
 		boolean flaglogout=homepg.isLogoutDisplayed();
 		soft.assertTrue(flaglogout,"Fail: Logout button is not displayed");
 		

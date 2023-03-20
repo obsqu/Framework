@@ -29,19 +29,6 @@ public class WebElementUtils {
 		
 	}
 	
-	/*public void enteringIntegerValuetoElements(WebDriver driver,WebElement element,String value)
-	{
-		try {
-			
-			
-			element.sendKeys(value);
-			
-		}catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-		
-	}*/
 	
 	
 	/**This method is to clear the field
