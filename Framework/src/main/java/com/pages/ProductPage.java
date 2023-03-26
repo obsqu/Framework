@@ -16,13 +16,15 @@ public class ProductPage {
 	
 	@FindBy(xpath="//span[text()='Product']")
 	WebElement productlink;
+	@FindBy(xpath="//input[@class='form-control input-sm']")
+	WebElement pdtSearch;
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
 	WebElement addpdt;
 		
 	@FindBy(xpath="//select[@id='Type']")
 	WebElement pdtype;
-	@FindBy(xpath="//input[@name='code']")
+	@FindBy(xpath="//input[@id='ProductCode']")
 	WebElement pdtcode;
 	@FindBy(xpath="//input[@id='ProductName']")
 	WebElement pdtname;
@@ -46,15 +48,16 @@ public class ProductPage {
 	WebElement pdtoptin;
 	@FindBy(xpath="//input[@name='userfile']")
 	WebElement pdtimage;
-	@FindBy(xpath="//textarea[@name='description']")
+	@FindBy(xpath="//div[@class='note-editable panel-body']")
 	WebElement pdtDescription;
+	@FindBy(xpath="//label[@class='btn color02 active']")
+	WebElement pdtColor;
 	@FindBy(xpath="//button[@class='btn btn-add']")
 	WebElement pdtsubmit;
 	@FindBy(xpath="//button[@class='btn btn-default']")
 	WebElement pdtclose;
 	
-	@FindBy(xpath="//input[@type='search']")
-	WebElement prdtsearch;
+	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
 	WebElement productcode_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
@@ -71,18 +74,22 @@ public class ProductPage {
 	WebElement MNCstoreQuantity;
 	@FindBy(xpath="(//input[@id='pricestr'])[1]")
 	WebElement MNCstorePrice;
-	@FindBy(xpath="(//button[text()='submit'])[2]")
-	WebElement storeClose;
+	@FindBy(xpath="(//button[text()='submit'][2])")
+	WebElement storeSubmitonProduct;
+	@FindBy(xpath="(/button[@class='btn btn-default hiddenpr'][2]")
+	WebElement storeCloseonProduct;
 	
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][1]")
 	WebElement crossButn;
 	@FindBy(xpath="//a[@class='btn btn-danger']")
 	WebElement deleteButn;
+	
 	@FindBy(xpath="//a[@class='btn btn-default'][2]")
 	WebElement viewButn;
 	@FindBy(xpath="//button[@class='btn btn-default hiddenpr']")
 	WebElement closeOnView;
+	
 	@FindBy(xpath="//a[@class='btn btn-default'][3]")
 	WebElement editButn;
 	@FindBy(xpath="//button[@class='btn btn-default float-right']")
@@ -90,7 +97,26 @@ public class ProductPage {
 	@FindBy(xpath="//button[@class='btn btn-green col-md-6 flat-box-btn waves-effect waves-button']")
 	WebElement submitOnEdit;
 	
+	@FindBy(xpath="//a[@class='btn btn-default'][4]")
+	WebElement modifyButn;
 	
+	@FindBy(xpath="//a[@class='btn btn-default'][5]")
+	WebElement barcodePrintBtn;
+	@FindBy(xpath="//select[@id='Brrows']")
+	WebElement colmnNumberOnBarcod;
+	@FindBy(xpath="//input[@id='Brnum']")
+	WebElement NumberOnBarcod;
+	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'][3]")
+	WebElement submitOnBarcode;
+	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'][4]")
+	WebElement printOnBarcode;
+	
+	@FindBy(xpath="//a[@class='btn btn-add btn-xs'][1]")
+	WebElement downloadCSv;
+	@FindBy(xpath="//a[@class='btn btn-add btn-xs'][2]")
+	WebElement uploadCSv;
+	@FindBy(xpath="//a[@class='btn btn-red btn-xs']")
+	WebElement printMenu;
 	
 	public  ProductPage(WebDriver driver)
 	{
@@ -115,53 +141,53 @@ public class ProductPage {
 	
 	 public boolean isProductTypeDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtype);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtype);
+			
 	}
 	 public boolean isProductCodeDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtcode);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtcode);
+			
 	}
 	 public boolean isProductNameDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtname);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtname);
+			
 	}
 	 public boolean isProductCategoryDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtcategory);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtcategory);
+			
 	}
 	 public boolean isProductSupplierDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtsupplier);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtsupplier);
+			
 	}
 	 public boolean isProductPurchasePriceDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtpurchsprice);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtpurchsprice);
+			
 	}
 	 public boolean isProductTaxDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdttax);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdttax);
+			
 	}
 	 public boolean isProductTaxMethodDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdttaxmethod);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdttaxmethod);
+			
 	}
 	 public boolean isProductPriceDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtprice);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtprice);
+			
 	}
 	 public boolean isProductUnitDisplayed() {
 			
-			boolean flag=elementutil.isElementDisplayed(driver,pdtunit);
-			return flag;
+			return elementutil.isElementDisplayed(driver,pdtunit);
+			
 	}
 	 public boolean isProductAlertqtyDisplayed() {
 			
@@ -218,6 +244,7 @@ public class ProductPage {
 	
 	public void enterProductPurchasePrice(String purchPriceVal)
 	{
+		elementutil.cleartheFieldd(driver,pdtpurchsprice);
 		
 		elementutil.enteringValuetoElements(driver,pdtpurchsprice,purchPriceVal);
 	}
@@ -245,7 +272,7 @@ public class ProductPage {
 	
 	public void enterAlertQuantity(String AlertQtyVal)
 	{
-		
+		elementutil.cleartheFieldd(driver, pdtalertqty);
 		elementutil.enteringValuetoElements(driver, pdtalertqty, AlertQtyVal);
 	}
 	
@@ -272,11 +299,15 @@ public class ProductPage {
 		elementutil.clickonTheElement(driver,pdtclose);
 	}
 	
-	public String ProductSearch(String name)
+	
+	public void ProductSearch(String value)
 	{
-		elementutil.enteringValuetoElements(driver,prdtsearch, name);
-		return name;
+		elementutil.enteringValuetoElements(driver,pdtSearch, value);
+		
 	}
+	
+	
+	
 	public String getProductCodeFromSearchResults()
 	{
 		return elementutil.getingtheText(driver,productcode_searchresult);
@@ -301,29 +332,120 @@ public class ProductPage {
 	{
 		return elementutil.getingtheText(driver,productprice_searchresult);
 	}
+	
 	public void selectMNCStoreQuantity(String mncstrqty)
 	{
+		elementutil.cleartheFieldd(driver, MNCstoreQuantity);
 		droputil.elememtSelectbyValue(driver,MNCstoreQuantity, mncstrqty);
 	}
 	public void selectMNCStorePrice(String mncstrprice)
 	{
+		elementutil.cleartheFieldd(driver, MNCstorePrice);
 		droputil.elememtSelectbyValue(driver,MNCstorePrice, mncstrprice);
 	}
 	public void StoreSubmit()
 	{
-		elementutil.clickonTheElement(driver,storeClose);
+		elementutil.clickonTheElement(driver,storeSubmitonProduct);
+	}
+	public void StoreClose()
+	{
+		elementutil.clickonTheElement(driver,storeCloseonProduct);
 	}
 
+	
+	
+	public void viewProductDetails()
+	{
+		elementutil.clickonTheElement(driver,viewButn);
+		
+	}
+	
+	public void closeProductViewPage() {
+		elementutil.clickonTheElement(driver,closeOnView);
+	}
+	
+	public void editButtonClick() {
+		elementutil.clickonTheElement(driver,editButn);
+	}
+	public void editProductType(String pdtTypeValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtype);
+		droputil.elememtSelectbyValue(driver,pdtype,pdtTypeValue);
+	}
+	public void editProductCode(String pdtCodeValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtcode);
+		elementutil.enteringValuetoElements(driver,pdtcode, pdtCodeValue);
+	}
+	public void editProductName(String pdtNameValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtname);
+		elementutil.enteringValuetoElements(driver,pdtname, pdtNameValue);
+	}
+	public void editProductCategory(String pdtCatgryValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtcategory);
+		droputil.elememtSelectbyValue(driver,pdtcategory, pdtCatgryValue);
+	}
+	public void editProductTax(String pdtTaxValue)
+	{
+		elementutil.cleartheFieldd(driver,pdttax);
+		elementutil.enteringValuetoElements(driver,pdttax, pdtTaxValue);
+	}
+	public void editProductTaxMethod(String pdttaxmthdValue)
+	{
+		elementutil.cleartheFieldd(driver,pdttaxmethod);
+		droputil.elememtSelectbyValue(driver,pdttaxmethod,pdttaxmthdValue);
+	}
+	public void editProductPrice(String pdtPriceValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtprice);
+		elementutil.enteringValuetoElements(driver,pdtprice, pdtPriceValue);
+	}
+	public void editProductOption(String pdtOptionValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtoptin);
+		elementutil.enteringValuetoElements(driver,pdtoptin, pdtOptionValue);
+	}
+	public void editProductDescription(String pdtDescripValue)
+	{
+		elementutil.cleartheFieldd(driver,pdtDescription);
+		elementutil.enteringValuetoElements(driver,pdtDescription, pdtDescripValue);
+	}
+	public void submitProdutEditDetails() {
+		elementutil.clickonTheElement(driver,submitOnEdit);
+	}
+	
 	public void deleteProductDetails()
 	{
 		elementutil.clickonTheElement(driver,crossButn);
 		elementutil.clickonTheElement(driver,deleteButn);
 	}
 	
-	public void viewProductDetails()
+	public void ClickModifyButon()
 	{
-		elementutil.clickonTheElement(driver,viewButn);
-		elementutil.clickonTheElement(driver,closeOnView);
+		elementutil.clickonTheElement(driver,modifyButn);
+	}
+	
+	public void ClickBarCodeReader()
+	{
+		elementutil.clickonTheElement(driver,barcodePrintBtn);
+		
+	}
+	public void enterColumnNumberForBarcode(String colValOnBarcode)
+	{
+		
+		droputil.elememtSelectbyVisibleText(driver,colmnNumberOnBarcod,colValOnBarcode);
+	}
+	public void NumberForBarcode(String numberVal) {
+		elementutil.cleartheFieldd(driver, NumberOnBarcod);
+		elementutil.enteringValuetoElements(driver,NumberOnBarcod,numberVal);
+	}
+	public void submitButnOnBarcode() {
+		elementutil.clickonTheElement(driver,submitOnBarcode);
+	}
+	public void printButnOnBarcode() {
+		elementutil.clickonTheElement(driver,printOnBarcode);
 	}
 
 	

@@ -87,7 +87,7 @@ public class WebElementUtils {
 	{
 		boolean flag = false;
 		try {
-			;
+			
 			flag= element.isSelected();
 			
 		}catch(Exception e)
