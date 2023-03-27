@@ -132,12 +132,12 @@ public class HomePage {
 	    return new ProductPage(driver);
 	}
 
-   /*public StorePage navigateToStorePage() {
-	elementutils.clickonTheElement(driver, pos);
+   public StorePage navigateToStorePage() {
+	elementutils.clickonTheElement(driver, storelink);
 	return new StorePage(driver);
 	}
    
-   public ProductPage navigateToPdtPage() {
+   /*public ProductPage navigateToPdtPage() {
 	     elementutils.clickonTheElement(driver, product);
 	    return new ProductPage(driver);
 	}
