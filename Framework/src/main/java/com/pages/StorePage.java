@@ -23,11 +23,11 @@ public class StorePage {
 	
 	@FindBy(xpath="//input[@name='name']")
 	WebElement storeName;
-	@FindBy(xpath="//input[@name='email']")
+	@FindBy(xpath="(//input[@class='form-control'])[2]")
 	WebElement storeEmailid;
-	@FindBy(xpath="//input[@name='phone']")
+	@FindBy(xpath="//input[@id='StorePhone']")
 	WebElement storePhoneNumbr;
-	@FindBy(xpath="//input[@name='country']")
+	@FindBy(xpath="//input[@id='Country']")
 	WebElement storeCountry;
 	@FindBy(xpath="//input[@id='City']")
 	WebElement storeCity;
@@ -38,13 +38,13 @@ public class StorePage {
 	@FindBy(xpath="//button[@class='btn btn-add']")
 	WebElement storeSubmitBtn;
 	
-	@FindBy(xpath="//a[@class='btn btn-default'][1]")
+	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
 	WebElement storeDeleteBtn;
-	@FindBy(xpath="//a[@class='btn btn-default'][2]")
+	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
 	WebElement storeEditBtn;
 	@FindBy(xpath="//button[@class='btn btn-green col-md-6 flat-box-btn waves-effect waves-button']")
 	WebElement submitEditBtn;
-	@FindBy(xpath="//a[@class='btn btn-default'][3]")
+	@FindBy(xpath="(//a[@class='btn btn-default'])[3]")
 	WebElement storeManageTblButn;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
@@ -66,34 +66,43 @@ public class StorePage {
 	{
 		elementutils.clickonTheElement(driver,addStoreButn);
 	}
-	public void addStoreName(String storenmValue)
+	public void addStoreName(String storeNamevl)
 	{
-		elementutils.enteringValuetoElements(driver,storeName,storenmValue);
+		elementutils.cleartheFieldd(driver,storeName);
+		elementutils.enteringValuetoElements(driver,storeName,storeNamevl);
 	}
-	public void addStoreEmailId(String emailid)
+	public void addStoreEmailid(String storeEmailvl)
 	{
-		elementutils.enteringValuetoElements(driver,storeEmailid,emailid);
+		elementutils.cleartheFieldd(driver,storeEmailid);
+		elementutils.enteringValuetoElements(driver,storeEmailid,storeEmailvl);
 	}
-	public void addStorePhoneNumber(String storPhn)
+	public void addStorePhoneNo(String storePhonevl)
 	{
-		elementutils.enteringValuetoElements(driver,storePhoneNumbr,storPhn);
+		elementutils.cleartheFieldd(driver,storePhoneNumbr);
+		elementutils.enteringValuetoElements(driver,storePhoneNumbr,storePhonevl);
 	}
-	public void addStoreCountry(String countryVal)
+	public void addStoreCountry(String storeCountryvl)
 	{
-		elementutils.enteringValuetoElements(driver,storeCountry,countryVal);
+		elementutils.cleartheFieldd(driver,storeCountry);
+		elementutils.enteringValuetoElements(driver,storeCountry,storeCountryvl);
 	}
-	public void addStoreCity(String cityValu)
+	public void addStoreCity(String storeCityvl)
 	{
-		elementutils.enteringValuetoElements(driver,storeCity,cityValu);
+		elementutils.cleartheFieldd(driver,storeCity);
+		elementutils.enteringValuetoElements(driver,storeCity,storeCityvl);
 	}
-	public void addStoreAddress(String adresVal)
+	public void addStoreAddress(String storeAddresvl)
 	{
-		elementutils.enteringValuetoElements(driver,storeAddress,adresVal);
+		elementutils.cleartheFieldd(driver,storeAddress);
+		elementutils.enteringValuetoElements(driver,storeAddress,storeAddresvl);
 	}
-	public void addStoreCustomFooter(String custmfutVal)
+	public void addStoreCustmFoot(String storeCustmFutvl)
 	{
-		elementutils.enteringValuetoElements(driver,storeCustomFootr,custmfutVal);
+		elementutils.cleartheFieldd(driver,storeCustomFootr);
+		elementutils.enteringValuetoElements(driver,storeCustomFootr,storeCustmFutvl);
 	}
+	
+	
 	public void submitStoreValues()
 	{
 		elementutils.clickonTheElement(driver,storeSubmitBtn);
@@ -133,41 +142,7 @@ public class StorePage {
 		elementutils.clickonTheElement(driver,storeEditBtn);
 	}
 	
-	public void editStoreName(String storeNamevl)
-	{
-		elementutils.cleartheFieldd(driver,storeName);
-		elementutils.enteringValuetoElements(driver,storeName,storeNamevl);
-	}
-	public void editStoreEmailid(String storeEmailvl)
-	{
-		elementutils.cleartheFieldd(driver,storeEmailid);
-		elementutils.enteringValuetoElements(driver,storeEmailid,storeEmailvl);
-	}
-	public void editStorePhoneNo(String storePhonevl)
-	{
-		elementutils.cleartheFieldd(driver,storePhoneNumbr);
-		elementutils.enteringValuetoElements(driver,storePhoneNumbr,storePhonevl);
-	}
-	public void editStoreCountry(String storeCountryvl)
-	{
-		elementutils.cleartheFieldd(driver,storeCountry);
-		elementutils.enteringValuetoElements(driver,storeCountry,storeCountryvl);
-	}
-	public void editStoreCity(String storeCityvl)
-	{
-		elementutils.cleartheFieldd(driver,storeCity);
-		elementutils.enteringValuetoElements(driver,storeCity,storeCityvl);
-	}
-	public void editStoreAddress(String storeAddresvl)
-	{
-		elementutils.cleartheFieldd(driver,storeAddress);
-		elementutils.enteringValuetoElements(driver,storeAddress,storeAddresvl);
-	}
-	public void editStoreCustmFoot(String storeCustmFutvl)
-	{
-		elementutils.cleartheFieldd(driver,storeCustomFootr);
-		elementutils.enteringValuetoElements(driver,storeCustomFootr,storeCustmFutvl);
-	}
+	
 	public void submitEditDetails() {
 		elementutils.clickonTheElement(driver,submitEditBtn);
 	}

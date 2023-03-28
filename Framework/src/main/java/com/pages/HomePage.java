@@ -41,6 +41,9 @@ public class HomePage {
 	@FindBy(xpath="//i[@class='fa fa-sign-out fa-lg']")
 	WebElement logout;
 	
+	@FindBy(xpath="//span[text()='Waiters']")
+	WebElement waiterlink;
+	
 	public  HomePage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -120,7 +123,10 @@ public class HomePage {
 		return flag;
 	}
 	
-	
+	public void waiterPageLink(String waitervl) {
+		elementutils.clickonTheElement(driver, peoplelink);
+	     dropdwn.elememtSelectbyValue(driver,waiterlink, waitervl);
+	}
 	
 	/*public HomePage navigateToPosPage() {
 		elementutils.clickonTheElement(driver, poslink);
@@ -137,12 +143,12 @@ public class HomePage {
 	return new StorePage(driver);
 	}
    
-   /*public ProductPage navigateToPdtPage() {
-	     elementutils.clickonTheElement(driver, product);
-	    return new ProductPage(driver);
-	}
+   /*public WaiterPage navigateToWaiterPage() {
+	    
+	    return new WaiterPage(driver);
+	}*/
    
-   public ProductPage navigateToPdtPage() {
+   /*public ProductPage navigateToPdtPage() {
 	     elementutils.clickonTheElement(driver, product);
 	    return new ProductPage(driver);
 	}

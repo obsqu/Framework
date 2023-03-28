@@ -39,7 +39,7 @@ public class ProductPageTest extends AutomationBase{
 		pdtpage=homepg.navigateToPdtPage();
 	}
 	
-	/*@Test(priority=1,enabled=true)
+	@Test(priority=1,enabled=true)
 	
 	public void validateElementsonAddProduct()
 	{
@@ -61,37 +61,37 @@ public class ProductPageTest extends AutomationBase{
 		pdtpage.closeProductDetails();
 		soft.assertAll();
 		
-	}*/
+	}
 	
 	@Test(priority=2,enabled=true)
 	public void validateAddProductDetialsWithStockValue() throws InterruptedException
 	{
 		pdtpage.clickOnAddProductButton();
 		pdtpage.selectProductType("0");
-		pdtpage.enterProductCode("1420");
-		pdtpage.enterProductName("BBBBQQ");
-		pdtpage.selectProductCategory("Pasta");
+		pdtpage.addProductCode("1420");
+		pdtpage.addProductName("BBBBQQ");
+		pdtpage.selectProductCategory("Pizza");
 		pdtpage.selectProductSupplier("Anujith");
 		pdtpage.enterProductPurchasePrice("20000");
-		pdtpage.enterProductTax("25");
-		pdtpage.selectPrdtTaxmethod("1");
-		pdtpage.enterProductPrice("30000");
+		pdtpage.addProductTax("25");
+		pdtpage.selectProductTaxMethod("1");
+		pdtpage.addProductPrice("30000");
 		pdtpage.enterProductUnit("20");
 		pdtpage.enterAlertQuantity("20");
-		pdtpage.enterProductOption("GoodTaste");
-		pdtpage.enterProductDescription("Good TAste,Super");
+		pdtpage.addProductOption("GoodTaste");
+		pdtpage.addProductDescription("Good TAste,Super");
 		pdtpage.submitProductDetails();
 			
-		pdtpage.selectMNCStoreQuantity("10");
-		pdtpage.selectMNCStorePrice("100");
+		pdtpage.enterMNCStoreQuantity("10");
+		pdtpage.enterMNCStorePrice("100");
 		pdtpage.StoreSubmit();
 		
 		Thread.sleep(2000);
 		
-		pdtpage.ProductSearch("13213");
+		pdtpage.ProductSearch("1420");
 		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1420","Failure Message: Product Code is not matched");
 		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBBBQQ","Failure Message: Product Name is not matched");
-		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pasta","Failure Message: Product Category is not matched");
+		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pizza","Failure Message: Product Category is not matched");
 		soft.assertEquals(pdtpage.getProductDescriptionFromSearchResults(),"Good TAste,Super","Failure Message: Product Description is not matched");
 		soft.assertEquals(pdtpage.getProductTaxFromSearchResults(),"25","Failure Message: Product Tax is not matched");
 		soft.assertEquals(pdtpage.getProductPriceFromSearchResults(),"30000.000 abc","Failure Message: Product Price is not matched");
@@ -99,52 +99,52 @@ public class ProductPageTest extends AutomationBase{
 		
 	}
 	
-	/*@Test(priority=3,enabled=true)
+	@Test(priority=3,enabled=true)
 	public void validateAddProductDetialsWithOutStockValues()
 	{
 		pdtpage.clickOnAddProductButton();
 		pdtpage.selectProductType("Service");
-		pdtpage.enterProductCode("1110201");
-		pdtpage.enterProductName("BBQSSS");
+		pdtpage.addProductCode("150");
+		pdtpage.addProductName("BBQQSSS");
 		pdtpage.selectProductCategory("Pizza");
 		pdtpage.selectProductSupplier("Anujith");
 		pdtpage.enterProductPurchasePrice("1000");
-		pdtpage.enterProductTax("10");
-		pdtpage.selectPrdtTaxmethod("inclusive");
-		pdtpage.enterProductPrice("110");
+		pdtpage.addProductTax("10");
+		pdtpage.selectProductTaxMethod("inclusive");
+		pdtpage.addProductPrice("110");
 		pdtpage.enterProductUnit("10");
 		pdtpage.enterAlertQuantity("30");
-		pdtpage.enterProductOption("Good,Taste");
-		pdtpage.enterProductDescription("Good Quality");
+		pdtpage.addProductOption("Good,Taste");
+		pdtpage.addProductDescription("Good Quality");
 		pdtpage.submitProductDetails();
 		
 		pdtpage.StoreSubmit();
 		
-		pdtpage.ProductSearch("1110201");
-		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1110201","Failure Message: Product Code is not matched");
-		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBQSS","Failure Message: Product Name is not matched");
+		pdtpage.ProductSearch("150");
+		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"150","Failure Message: Product Code is not matched");
+		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBQQSSS","Failure Message: Product Name is not matched");
 		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pizza","Failure Message: Product Category is not matched");
 		soft.assertEquals(pdtpage.getProductDescriptionFromSearchResults(),"Good Quality","Failure Message: Product Description is not matched");
-		soft.assertEquals(pdtpage.getProductTaxFromSearchResults(),"15","Failure Message: Product Tax is not matched");
-		soft.assertEquals(pdtpage.getProductPriceFromSearchResults(),"110.000abc","Failure Message: Product Price is not matched");
+		soft.assertEquals(pdtpage.getProductTaxFromSearchResults(),"10","Failure Message: Product Tax is not matched");
+		soft.assertEquals(pdtpage.getProductPriceFromSearchResults(),"110.000 abc","Failure Message: Product Price is not matched");
 		soft.assertAll();
 		
 	}
-	*/
+	
 	@Test(priority=4,enabled=true)
 	public void ValidateEditProductDetails()
 	{
 		pdtpage.ProductSearch("1420");
 		pdtpage.editButtonClick();
-		pdtpage.editProductType("0");
-		pdtpage.editProductCode("2921");
-		pdtpage.editProductName("Chicken");
-		pdtpage.editProductCategory("Pizza");
-		pdtpage.editProductTax("100");
-		pdtpage.editProductTaxMethod("0");
-		pdtpage.editProductPrice("35");
-		pdtpage.editProductOption("Supertaste");
-		pdtpage.editProductDescription("Taste Good,Quality");
+		pdtpage.selectProductType("0");
+		pdtpage.addProductCode("2921");
+		pdtpage.addProductName("Chicken");
+		pdtpage.selectProductCategory("Pizza");
+		pdtpage.addProductTax("100");
+		pdtpage.selectProductTaxMethod("0");
+		pdtpage.addProductPrice("35");
+		pdtpage.addProductOption("Supertaste");
+		pdtpage.addProductDescription("Taste Good,Quality");
 		pdtpage.submitProdutEditDetails();
 		
 		pdtpage.ProductSearch("2921");
@@ -160,10 +160,18 @@ public class ProductPageTest extends AutomationBase{
 		
 	}
 	
+	@Test(priority=6,enabled=true)
+	public void validateDeleteProductAction()
+	{
+		pdtpage.ProductSearch("1235");
+		pdtpage.deleteProductDetails();
+		pdtpage.ProductSearch("1235");
+		Assert.assertEquals(pdtpage.getProductCodeFromSearchResults(),"No matching records found","Failure Message: Product Code is not matched");
+		
+	}
 	
 	
-	
-	@Test(priority=5,enabled=true)
+	/*@Test(priority=5,enabled=true)
 	public void ValidateViewProductAction()
 	{
 		pdtpage.ProductSearch("1212");
@@ -179,19 +187,7 @@ public class ProductPageTest extends AutomationBase{
 		soft.assertAll();
 	}
 	
-	
-	@Test(priority=6,enabled=true)
-	public void validateDeleteProductAction()
-	{
-		pdtpage.ProductSearch("201");
-		pdtpage.deleteProductDetails();
-		pdtpage.ProductSearch("201");
-		Assert.assertEquals(pdtpage.getProductCodeFromSearchResults(),"No matching records found","Failure Message: Product Code is not matched");
-		soft.assertAll();
-	}
-	
-	
-	
+		
 	@Test(priority=7,enabled=true)
 	public void ValidateModifyProductStockAction()
 	{
@@ -210,7 +206,7 @@ public class ProductPageTest extends AutomationBase{
 		pdtpage.NumberForBarcode("10");
 		pdtpage.submitButnOnBarcode();
 		pdtpage.printButnOnBarcode();
-	}
+	}*/
 	
 	
 }

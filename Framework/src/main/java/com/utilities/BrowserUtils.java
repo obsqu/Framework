@@ -74,7 +74,7 @@ public class BrowserUtils {
 		}
 		return pagesrc;
 	}
-	/**This method is to navigate
+	/**This method is to navigate to a particular webpage
 	 * 
 	 * @param driver
 	 * @param url
@@ -87,6 +87,11 @@ public class BrowserUtils {
 		}
 	}
 	
+	/**This method is to to navigate back to the previous page
+	 * 
+	 * @param driver
+	 */
+	
 	public void navigateBacktoPreviousPage(WebDriver driver) {
 		try {
 			driver.navigate().back();
@@ -94,6 +99,11 @@ public class BrowserUtils {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	/**This method is to navigate to webpage
+	 * 
+	 * @param driver
+	 */
 	
 	public void navigateForwardtoWebPage(WebDriver driver) {
 		try {
@@ -103,6 +113,11 @@ public class BrowserUtils {
 		}
 	}
 	
+	/**This method is to refresh the page
+	 * 
+	 * @param driver
+	 */
+	
 	public void refreshPage(WebDriver driver) {
 		try {
 			driver.navigate().refresh();
@@ -110,6 +125,11 @@ public class BrowserUtils {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	/**This method is to maximize the page window
+	 * 
+	 * @param driver
+	 */
 	
 	public void maximizeWindow(WebDriver driver) {
 		try {
@@ -119,6 +139,11 @@ public class BrowserUtils {
 		}
 	}
 	
+	/**This method is to minimize the page window
+	 * 
+	 * @param driver
+	 */
+	
 	public void minimizeWindow(WebDriver driver) {
 		try {
 			driver.manage().window().minimize();
@@ -126,7 +151,11 @@ public class BrowserUtils {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+	 
+	/**This method is to fullscreen the page window
+	 * 
+	 * @param driver
+	 */
 	public void fullScreenWindow(WebDriver driver) {
 		try {
 			driver.manage().window().fullscreen();
@@ -135,6 +164,11 @@ public class BrowserUtils {
 		}
 	}
 	
+	/**This method is to close the current running page
+	 * 
+	 * @param driver
+	 */
+	
 	public void closeWindows(WebDriver driver) {
 		try {
 			driver.close();
@@ -142,6 +176,11 @@ public class BrowserUtils {
 			System.out.println(e.getMessage());
 		}
 	}
+	
+	/**This method is to close all the opened windows
+	 * 
+	 * @param driver
+	 */
 	
 	public void quiteWindow(WebDriver driver) {
 		try {

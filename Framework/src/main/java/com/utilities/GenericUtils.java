@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class GenericUtils {
+	
 	/**This method is for select the element by its index value
 	 * 
 	 * @param driver
@@ -43,6 +44,13 @@ public class GenericUtils {
 		}
 	}
 	
+	/**This method is to select an element by taking its visible text
+	 * 
+	 * @param driver
+	 * @param element
+	 * @param text
+	 */
+	
 	public void elememtSelectbyVisibleText(WebDriver driver,WebElement element,String text)
 	{
 		
@@ -54,7 +62,12 @@ public class GenericUtils {
 		}
 	}
 	
-	
+	/**This method is to select multiple elements 
+	 * 
+	 * @param driver
+	 * @param element
+	 * @return
+	 */
 	
 	public List<WebElement> multielememtgetOption(WebDriver driver,WebElement element)
 	{
@@ -112,7 +125,7 @@ public class GenericUtils {
 	 * @param element
 	 * @param value
 	 */
-	public void multielememtDeSelectByValue(WebDriver driver,WebElement element,String value)
+	public void elememtDeSelectByValue(WebDriver driver,WebElement element,String value)
 	{
 		
 		try {
@@ -129,7 +142,7 @@ public class GenericUtils {
 	 * @param element
 	 * @param value
 	 */
-	public void multielememtDeSelectbyIndex(WebDriver driver,WebElement element,int index)
+	public void elememtDeSelectbyIndex(WebDriver driver,WebElement element,int index)
 	{
 		
 		try {
@@ -146,7 +159,7 @@ public class GenericUtils {
 	 * @param element
 	 * @param value
 	 */
-	public void multielememtDeSelectbyVisibleText(WebDriver driver,WebElement element,String text)
+	public void elememtDeSelectbyVisibleText(WebDriver driver,WebElement element,String text)
 	{
 		
 		try {
@@ -163,7 +176,7 @@ public class GenericUtils {
 	 * @param element
 	 * @param value
 	 */
-	public void multielememtDeSelectAll(WebDriver driver,WebElement element,String value)
+	public void elememtDeSelectAll(WebDriver driver,WebElement element,String value)
 	{
 		
 		try {
@@ -171,20 +184,52 @@ public class GenericUtils {
 			sel.deselectAll();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
 		}
 	}
 	
+	
+	/**
+	 * This method is to dismiss an alert
+	 * @param driver
+	 */
+	
 	public void dismissAnAlert(WebDriver driver)
 	{
-		driver.switchTo().alert().dismiss();
+		try {
+			driver.switchTo().alert().dismiss();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
 	}
+	
+	/**This method is to accept an alert message
+	 * 
+	 * @param driver
+	 */
 	
 	public void acceptAnAlert(WebDriver driver) {
-		driver.switchTo().alert().accept();
+		try {
+			driver.switchTo().alert().accept();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
 	}
 	
+	/**This method is to getTitle of the alert message
+	 * 
+	 * @param driver
+	 */
+	
 	public void getTitleOfAlert(WebDriver driver) {
-		driver.switchTo().alert().getText();
+		try {
+			driver.switchTo().alert().getText();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
 	}
 
 }
