@@ -52,9 +52,9 @@ public class ProductPage {
 	WebElement pdtDescription;
 	@FindBy(xpath="//label[@class='btn color02 active']")
 	WebElement pdtColor;
-	@FindBy(xpath="//button[@class='btn btn-add']")
+	@FindBy(xpath="(//button[@class='btn btn-add'])[1]")
 	WebElement pdtsubmit;
-	@FindBy(xpath="//button[@class='btn btn-default']")
+	@FindBy(xpath="(//button[@class='btn btn-default'])[3]")
 	WebElement pdtclose;
 	
 	
@@ -76,7 +76,7 @@ public class ProductPage {
 	WebElement MNCstorePrice;
 	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'])[2]")
 	WebElement storeSubmitonProduct;
-	@FindBy(xpath="(/button[@class='btn btn-default hiddenpr'][2]")
+	@FindBy(xpath="(//button[@class='btn btn-default hiddenpr'])[2]")
 	WebElement storeCloseonProduct;
 	
 	
@@ -237,7 +237,7 @@ public class ProductPage {
 		public void selectProductCategory(String pdtCatgryValue)
 		{
 			elementutil.cleartheFieldd(driver,pdtcategory);
-			droputil.elememtSelectbyValue(driver,pdtcategory, pdtCatgryValue);
+			droputil.elememtSelectbyVisibleText(driver,pdtcategory, pdtCatgryValue);
 		}
 		public void selectProductSupplier(String pdSupplierVal)
 		{
@@ -404,12 +404,13 @@ public class ProductPage {
 	
 	public void enterMNCStoreQuantity(String mncstrqty)
 	{
-		elementutil.cleartheFieldd(driver, MNCstoreQuantity);
+		
 		elementutil.enteringValuetoElements(driver, MNCstoreQuantity, mncstrqty);
 	}
 	public void enterMNCStorePrice(String mncstrprice)
 	{
-		elementutil.cleartheFieldd(driver, MNCstorePrice);
+
+
 	    elementutil.enteringValuetoElements(driver, MNCstorePrice, mncstrprice);
 	}
 	public void StoreSubmit()

@@ -1,5 +1,8 @@
 package com.test;
 
+import java.io.IOException;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -12,6 +15,8 @@ import com.pages.LoginPage;
 import com.pages.ProductPage;
 import com.pages.StorePage;
 import com.utilities.BrowserUtils;
+import com.utilities.PropertyUtil;
+import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
 
 public class StoreTestPage extends AutomationBase{
@@ -23,28 +28,44 @@ public class StoreTestPage extends AutomationBase{
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	WebElementUtils elementutil=new WebElementUtils();
 	SoftAssert soft=new SoftAssert();
+	PropertyUtil property=new PropertyUtil();
+	WaitUtils waitutil=new WaitUtils();
 	
 	@BeforeMethod
-	public void preRun()
+	public void preRun() throws IOException
 	{
-		driver=getDriver();
-		brwsrUtil.launchUrl(driver,"https://qalegend.com/restaurant/");
+		
+        driver=getDriver();
+		
+		Properties allProp=property.getAllProperties("config.properties");
+		String site=allProp.getProperty("url");
+		brwsrUtil.launchUrl(driver,site);
+		
+		waitutil.implicitWait(driver,30);
+		
 		loginpg=new LoginPage(driver);
-		homepg=loginpg.login("admin","password");
+		homepg=new HomePage(driver);
 		storepg=homepg.navigateToStorePage();
+		
+		
+		
+		
 	}
 	
 	@Test(priority=1,enabled=true)
 	public void validateAddDatasToStore()
 	{
-		storepg.addStoreButton();
-		storepg.addStoreName("SNStores");
-		storepg.addStoreEmailid("shibisa@gmail.com");
-		storepg.addStorePhoneNo("345487643");
-		storepg.addStoreCountry("India");
-		storepg.addStoreCity("TVM");
-		storepg.addStoreAddress("Sn manzil");
-		storepg.addStoreCustmFoot("ashkjhsdfkjhj");
+		storepg.clickOnAddStoreButton();
+		storepg.clickOnStoreName();
+		storepg.enterValueToStoreName("SNStores");
+		//storepg.clickOnStoreMail();
+		//waitutil.waitForAnElement(driver,By.xpath=("//input[@id='email']"), timeOut)
+		storepg.enterValueToStoreEmailID("shibisa@gmail.com");
+		storepg.enterValueToStorePhoneNumber("345487643");
+		storepg.enterValueToStoreCountryr("India");
+		storepg.enterValueToStoreCity("TVM");
+		storepg.enterValueToStoreAddress("Sn manzil");
+		storepg.enterValueToStoreCustom("ashkjhsdfkjhj");
 		storepg.submitStoreValues();
 		
 		storepg.searchStoreLink("345487643");
@@ -57,30 +78,30 @@ public class StoreTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=2,enabled=true)
+    @Test(priority=3,enabled=true)
 	public void validateDeleteStoreDatas() {
 		
-		storepg.searchStoreLink("ASJStores");
+		storepg.searchStoreLink("SNStores");
 		storepg.deleteStoreDetails();
 		
-		storepg.searchStoreLink("ASJStores");
+		storepg.searchStoreLink("SNStores");
 		Assert.assertEquals(storepg.getStoreNameFromSearchResults(),"No matching records found","Failure Message: Store Name is not matched");
 		
 		
 	}
 	
-	@Test(priority=3,enabled=true)
+	@Test(priority=2,enabled=true)
 	public void validateEditStoreDetails() {
 		
-		storepg.searchStoreLink("9123456722");
+		storepg.searchStoreLink("345487643");
 		storepg.editStoreDetails();
-		storepg.addStoreName("AKNSStores");
-		storepg.addStoreEmailid("wowshibis@gmail.com");
-		storepg.addStorePhoneNo("9876542314");
-		storepg.addStoreCountry("INDIA");
-		storepg.addStoreCity("TVM");
-		storepg.addStoreAddress("SN manzil");
-		storepg.addStoreCustmFoot("HiaAll");
+		storepg.enterValueToStoreName("AKNSStores");
+		storepg.enterValueToStoreEmailID("wowshibis@gmail.com");
+		storepg.enterValueToStorePhoneNumber("9876542314");
+		storepg.enterValueToStoreCountryr("INDIA");
+		storepg.enterValueToStoreCity("TVM");
+		storepg.enterValueToStoreAddress("SN manzil");
+		storepg.enterValueToStoreCustom("HiaAll");
 		storepg.submitEditDetails();
 		
 		storepg.searchStoreLink("9876542314");

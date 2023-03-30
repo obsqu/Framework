@@ -1,6 +1,8 @@
 package com.test;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -13,6 +15,8 @@ import com.pages.HomePage;
 import com.pages.LoginPage;
 import com.pages.ProductPage;
 import com.utilities.BrowserUtils;
+import com.utilities.PropertyUtil;
+import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
 
 public class ProductPageTest extends AutomationBase{
@@ -26,17 +30,33 @@ public class ProductPageTest extends AutomationBase{
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	WebElementUtils elementutil=new WebElementUtils();
 	SoftAssert soft=new SoftAssert();
+	PropertyUtil property=new PropertyUtil();
+	WaitUtils waitutil=new WaitUtils();
 	
 	@BeforeMethod
-	public void preRun()
+	public void preRun() throws IOException
 	{
-		driver=getDriver();
+		
+        driver=getDriver();
+		
+		Properties allProp=property.getAllProperties("config.properties");
+		String site=allProp.getProperty("url");
+		brwsrUtil.launchUrl(driver,site);
+		//waitutil.implicitWait(driver,30);
+		
+		loginpg=new LoginPage(driver);
+		homepg=new HomePage(driver);
+		pdtpage=homepg.navigateToPdtPage();
+		
+		
+		
+		/*driver=getDriver();
 		brwsrUtil.launchUrl(driver,"https://qalegend.com/restaurant/");
 		loginpg=new LoginPage(driver);
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		
-		homepg=loginpg.login("admin","password");
-		pdtpage=homepg.navigateToPdtPage();
+		homepg=loginpg.login("admin","password");*/
+		
 	}
 	
 	@Test(priority=1,enabled=true)
@@ -68,7 +88,7 @@ public class ProductPageTest extends AutomationBase{
 	{
 		pdtpage.clickOnAddProductButton();
 		pdtpage.selectProductType("0");
-		pdtpage.addProductCode("1420");
+		pdtpage.addProductCode("1670");
 		pdtpage.addProductName("BBBBQQ");
 		pdtpage.selectProductCategory("Pizza");
 		pdtpage.selectProductSupplier("Anujith");
@@ -89,7 +109,7 @@ public class ProductPageTest extends AutomationBase{
 		Thread.sleep(2000);
 		
 		pdtpage.ProductSearch("1420");
-		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1420","Failure Message: Product Code is not matched");
+		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1670","Failure Message: Product Code is not matched");
 		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBBBQQ","Failure Message: Product Name is not matched");
 		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pizza","Failure Message: Product Category is not matched");
 		soft.assertEquals(pdtpage.getProductDescriptionFromSearchResults(),"Good TAste,Super","Failure Message: Product Description is not matched");
@@ -103,8 +123,8 @@ public class ProductPageTest extends AutomationBase{
 	public void validateAddProductDetialsWithOutStockValues()
 	{
 		pdtpage.clickOnAddProductButton();
-		pdtpage.selectProductType("Service");
-		pdtpage.addProductCode("150");
+		pdtpage.selectProductType("1");
+		pdtpage.addProductCode("1987");
 		pdtpage.addProductName("BBQQSSS");
 		pdtpage.selectProductCategory("Pizza");
 		pdtpage.selectProductSupplier("Anujith");
@@ -120,8 +140,8 @@ public class ProductPageTest extends AutomationBase{
 		
 		pdtpage.StoreSubmit();
 		
-		pdtpage.ProductSearch("150");
-		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"150","Failure Message: Product Code is not matched");
+		pdtpage.ProductSearch("1987");
+		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1987","Failure Message: Product Code is not matched");
 		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBQQSSS","Failure Message: Product Name is not matched");
 		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pizza","Failure Message: Product Category is not matched");
 		soft.assertEquals(pdtpage.getProductDescriptionFromSearchResults(),"Good Quality","Failure Message: Product Description is not matched");
@@ -134,9 +154,9 @@ public class ProductPageTest extends AutomationBase{
 	@Test(priority=4,enabled=true)
 	public void ValidateEditProductDetails()
 	{
-		pdtpage.ProductSearch("1420");
+		pdtpage.ProductSearch("1987");
 		pdtpage.editButtonClick();
-		pdtpage.selectProductType("0");
+		pdtpage.selectProductType("1");
 		pdtpage.addProductCode("2921");
 		pdtpage.addProductName("Chicken");
 		pdtpage.selectProductCategory("Pizza");
@@ -163,9 +183,9 @@ public class ProductPageTest extends AutomationBase{
 	@Test(priority=6,enabled=true)
 	public void validateDeleteProductAction()
 	{
-		pdtpage.ProductSearch("1235");
+		pdtpage.ProductSearch("987");
 		pdtpage.deleteProductDetails();
-		pdtpage.ProductSearch("1235");
+		pdtpage.ProductSearch("987");
 		Assert.assertEquals(pdtpage.getProductCodeFromSearchResults(),"No matching records found","Failure Message: Product Code is not matched");
 		
 	}
@@ -191,10 +211,10 @@ public class ProductPageTest extends AutomationBase{
 	@Test(priority=7,enabled=true)
 	public void ValidateModifyProductStockAction()
 	{
-		pdtpage.ProductSearch("1212");
+		pdtpage.ProductSearch("987");
 		pdtpage.ClickModifyButon();
-		pdtpage.selectMNCStoreQuantity("20");
-		pdtpage.selectMNCStorePrice("200");
+		pdtpage.enterMNCStoreQuantity("20");
+		pdtpage.enterMNCStorePrice("200");
 		pdtpage.StoreSubmit();
 	}
 	

@@ -12,18 +12,13 @@ public class StorePage {
 	WebDriver driver;
 	WebElementUtils elementutils=new WebElementUtils();
 	
-	public  StorePage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
-	}
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
 	WebElement addStoreButn;
 	
 	@FindBy(xpath="//input[@name='name']")
 	WebElement storeName;
-	@FindBy(xpath="(//input[@class='form-control'])[2]")
+	@FindBy(xpath="//input[@id='email']")
 	WebElement storeEmailid;
 	@FindBy(xpath="//input[@id='StorePhone']")
 	WebElement storePhoneNumbr;
@@ -35,7 +30,7 @@ public class StorePage {
 	WebElement storeAddress;
 	@FindBy(xpath="//input[@id='CustomeFooter']")
 	WebElement storeCustomFootr;
-	@FindBy(xpath="//button[@class='btn btn-add']")
+	@FindBy(xpath="//button[text()='Submit']")
 	WebElement storeSubmitBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
@@ -61,42 +56,56 @@ public class StorePage {
 	@FindBy(xpath="//input[@class='form-control input-sm']")
 	WebElement storeSearch;
 	
+	public  StorePage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
 	
-	public void addStoreButton()
+	
+	public void clickOnAddStoreButton()
 	{
 		elementutils.clickonTheElement(driver,addStoreButn);
 	}
-	public void addStoreName(String storeNamevl)
+	public void clickOnStoreName()
+	{
+		elementutils.clickonTheElement(driver,storeName);
+	}
+	public void clickOnStoreMail()
+	{
+		elementutils.clickonTheElement(driver,storeEmailid);
+	}
+	public void enterValueToStoreName(String storeNamevl)
 	{
 		elementutils.cleartheFieldd(driver,storeName);
 		elementutils.enteringValuetoElements(driver,storeName,storeNamevl);
 	}
-	public void addStoreEmailid(String storeEmailvl)
+	public void enterValueToStoreEmailID(String storeEmailvl)
 	{
 		elementutils.cleartheFieldd(driver,storeEmailid);
 		elementutils.enteringValuetoElements(driver,storeEmailid,storeEmailvl);
 	}
-	public void addStorePhoneNo(String storePhonevl)
+	public void enterValueToStorePhoneNumber(String storePhonevl)
 	{
 		elementutils.cleartheFieldd(driver,storePhoneNumbr);
 		elementutils.enteringValuetoElements(driver,storePhoneNumbr,storePhonevl);
 	}
-	public void addStoreCountry(String storeCountryvl)
+	public void enterValueToStoreCountryr(String storeCountryvl)
 	{
 		elementutils.cleartheFieldd(driver,storeCountry);
 		elementutils.enteringValuetoElements(driver,storeCountry,storeCountryvl);
 	}
-	public void addStoreCity(String storeCityvl)
+	public void enterValueToStoreCity(String storeCityvl)
 	{
 		elementutils.cleartheFieldd(driver,storeCity);
 		elementutils.enteringValuetoElements(driver,storeCity,storeCityvl);
 	}
-	public void addStoreAddress(String storeAddresvl)
+	public void enterValueToStoreAddress(String storeAddresvl)
 	{
 		elementutils.cleartheFieldd(driver,storeAddress);
 		elementutils.enteringValuetoElements(driver,storeAddress,storeAddresvl);
 	}
-	public void addStoreCustmFoot(String storeCustmFutvl)
+	public void enterValueToStoreCustom(String storeCustmFutvl)
 	{
 		elementutils.cleartheFieldd(driver,storeCustomFootr);
 		elementutils.enteringValuetoElements(driver,storeCustomFootr,storeCustmFutvl);

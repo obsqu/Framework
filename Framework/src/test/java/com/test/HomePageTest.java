@@ -16,6 +16,7 @@ import com.pages.HomePage;
 import com.pages.LoginPage;
 import com.utilities.BrowserUtils;
 import com.utilities.PropertyUtil;
+import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
 
 public class HomePageTest extends AutomationBase{
@@ -26,6 +27,7 @@ public class HomePageTest extends AutomationBase{
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	WebElementUtils elementutil=new WebElementUtils();
 	PropertyUtil property=new PropertyUtil();
+	WaitUtils waitutil=new WaitUtils();
 	
 	@BeforeMethod
 	public void preRun() throws IOException
@@ -36,13 +38,14 @@ public class HomePageTest extends AutomationBase{
 		homepg=new HomePage(driver);
 		
 		brwsrUtil.launchUrl(driver,"https://qalegend.com/restaurant/");
+		//waitutil.implicitWait(driver,30);
 		loginpg=new LoginPage(driver);
 		homepg=loginpg.login("admin","password");
 	}
 	
 	
 	
-	@Test
+	@Test(priority=1,enabled=true)
 	public void ValidatetheMenuItemsDisplayedonTheHomePage()
 	{
 		SoftAssert soft=new SoftAssert();

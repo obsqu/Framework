@@ -3,6 +3,7 @@ package com.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import com.utilities.GenericUtils;
 import com.utilities.WebElementUtils;
@@ -23,18 +24,18 @@ public class WaiterPage {
 	WebElement waiterPhoneNo;
 	@FindBy(xpath="//input[@id='WaiterEmail']")
 	WebElement waiterEmail;
-	@FindBy(xpath="//select[@id='WaiterStore']")
+	@FindBy(xpath="//select[@name='store_id']")
 	WebElement waiterStore;
 	
-	@FindBy(xpath="//button[@class='btn btn-add']")
+	@FindBy(xpath="//button[text()='Submit']")
 	WebElement waiterSubmitBtn;
 	@FindBy(xpath="//button[@class='btn btn-default']")
 	WebElement waiterCloseBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
 	WebElement waiterDeleteBtn;
-	@FindBy(xpath="//a[@class='btn btn-danger']")
-	WebElement deleteButn;
+	@FindBy(xpath="//a[text()='Yes, delete it!']")
+	WebElement yesDeleteWaiter;
 	
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
@@ -58,31 +59,41 @@ public class WaiterPage {
 	WebElement waiterSearch;
 	
 	
-	public void addWaiterButton()
+	public WaiterPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver,this);
+	}
+	public void ClickOnAddWaiterButton()
 	{
 		elementutil.clickonTheElement(driver,addWaiterButn);
 	}
-	public void addWaiterName(String waiterNamevl)
+	
+	public void clickOnWaitername() {
+		elementutil.clickonTheElement(driver,waiterName);
+	}
+	public void enterValueForWaiterName(String waiterNamevl)
 	{
+		
 		elementutil.cleartheFieldd(driver,waiterName);
 		elementutil.enteringValuetoElements(driver,waiterName,waiterNamevl);
 	}
-	public void addwaiterPhoneNum(String waiterPhonevl)
+	public void enterValueForWaiterPhone(String waiterPhonevl)
 	{
 		elementutil.cleartheFieldd(driver,waiterPhoneNo);
 		elementutil.enteringValuetoElements(driver,waiterPhoneNo,waiterPhonevl);
 	}
-	public void addwaiterEmailid(String waiteremailvl)
+	public void enterValueForWaiterEmailId(String waiteremailvl)
 	{
 		elementutil.cleartheFieldd(driver,waiterEmail);
 		elementutil.enteringValuetoElements(driver,waiterEmail,waiteremailvl);
 	}
-	 public void selectStore(String storeValue)
+	 public void selectValueForWaiterStore(String storeValue)
 		{
 			elementutil.cleartheFieldd(driver,waiterStore);
-			droputil.elememtSelectbyValue(driver,waiterStore,storeValue);
+			droputil.elememtSelectbyVisibleText(driver,waiterStore,storeValue);
+			//droputil.elememtSelectbyValue(driver,waiterStore,storeValue);
 		}
-	 public void submitWaiterValue() {
+	 public void submitWaiterValues() {
 		 elementutil.clickonTheElement(driver,waiterSubmitBtn);
 	 }
 	 
@@ -105,6 +116,16 @@ public class WaiterPage {
 	 }
 	 public String getWaiterCreatedDateandTimeFromSearchResult() {
 		 return elementutil.getingtheText(driver,waitercreateddate_searchresult);
+	 }
+	 
+	 public void clickDeleteWaiterDataButton() {
+		 elementutil.clickonTheElement(driver,waiterDeleteBtn);
+		 elementutil.clickonTheElement(driver,yesDeleteWaiter);
+	 }
+	 
+	 public void clickEditWaiterDataButton() {
+		 
+		 elementutil.clickonTheElement(driver,waiterEditBtn);
 	 }
 
 }

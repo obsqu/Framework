@@ -41,7 +41,7 @@ public class LoginPageTest extends AutomationBase{
 		
 		
 	}
-	@Test
+	@Test(priority=1,enabled=true)
 	public void validateLogin()
 	{
 		loginpg.enterValuetoUsername("admin");

@@ -43,6 +43,10 @@ public class HomePage {
 	
 	@FindBy(xpath="//span[text()='Waiters']")
 	WebElement waiterlink;
+	@FindBy(xpath="//span[text()='Customers']")
+	WebElement customerlink;
+	@FindBy(xpath="//span[text()='Suppliers']")
+	WebElement supplierlink;
 	
 	public  HomePage(WebDriver driver)
 	{
@@ -123,15 +127,7 @@ public class HomePage {
 		return flag;
 	}
 	
-	public void waiterPageLink(String waitervl) {
-		elementutils.clickonTheElement(driver, peoplelink);
-	     dropdwn.elememtSelectbyValue(driver,waiterlink, waitervl);
-	}
 	
-	/*public HomePage navigateToPosPage() {
-		elementutils.clickonTheElement(driver, poslink);
-		return new HomePage(driver);
-	}*/
 	
    public ProductPage navigateToPdtPage() {
 	     elementutils.clickonTheElement(driver, productlink);
@@ -143,10 +139,28 @@ public class HomePage {
 	return new StorePage(driver);
 	}
    
-   /*public WaiterPage navigateToWaiterPage() {
-	    
-	    return new WaiterPage(driver);
-	}*/
+   public WaiterPage navigateToWaiterPage() {
+	   elementutils.clickonTheElement(driver,peoplelink);
+	   elementutils.clickonTheElement(driver,waiterlink);
+	   return new WaiterPage(driver);
+   }
+   public CustomerPage navigateToCustomerPage() {
+	    elementutils.clickonTheElement(driver,peoplelink);
+	    elementutils.clickonTheElement(driver,customerlink);
+		return new CustomerPage(driver);
+	     
+	}
+   public SupplierPage navigateToSupplierPage() {
+	   elementutils.clickonTheElement(driver,peoplelink);
+	   elementutils.clickonTheElement(driver,supplierlink);
+	   return new SupplierPage(driver);
+   }
+
+   /*public CustomersPage navigateToCutomersPage() {
+	   elementutils.clickonTheElement(driver,peoplelink);
+	   elementutils.clickonTheElement(driver,customerlink);
+	   return new CustomersPage(driver);
+   }
    
    /*public ProductPage navigateToPdtPage() {
 	     elementutils.clickonTheElement(driver, product);
