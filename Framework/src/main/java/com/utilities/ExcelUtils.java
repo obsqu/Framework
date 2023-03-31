@@ -11,14 +11,14 @@ public class ExcelUtils {
 	
 	public static final String currentDir=System.getProperty("user.dir");
 	public static String filePath=currentDir+"/src/test/resources/";
-	String file="";
+	static String excelPath;
 	
 	static XSSFWorkbook workbook;
 	static XSSFSheet sheet;
 	
-	public ExcelUtils(String fileName,String sheetName) throws IOException
+	public ExcelUtils(String fileName) throws IOException
 	{
-		String excelPath=filePath+fileName;
+		excelPath=filePath+fileName;
 		workbook=new XSSFWorkbook(excelPath);
 		sheet=(XSSFSheet)workbook.getSheetAt(0);
 	}
@@ -26,7 +26,7 @@ public class ExcelUtils {
 	/**This method to get count row
 	 * 
 	 */
-	public static int getCount() {
+	public static int getRowCount() {
 		int rowCount=0;
 		try {
 			rowCount=sheet.getPhysicalNumberOfRows();
@@ -59,9 +59,9 @@ public class ExcelUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String readStringData(String fileName,String sheetname,int rowNum,int colNum) throws IOException
+	public static String readStringData(String sheetname,int rowNum,int colNum) throws IOException
 	{
-		String excelPath=filePath+fileName;
+		
 		
 		workbook=new XSSFWorkbook(excelPath);
 		sheet=workbook.getSheet(sheetname);

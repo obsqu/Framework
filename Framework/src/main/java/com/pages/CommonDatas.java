@@ -29,7 +29,7 @@ public class CommonDatas {
 		elementUtils.clickonTheElement(driver,submitButon);
 	}
 	
-	public void SearchDetails(String value)
+	public void ClickOnSearchDetails(String value)
 	{
 		elementUtils.enteringValuetoElements(driver,SearchBtn, value);
 		

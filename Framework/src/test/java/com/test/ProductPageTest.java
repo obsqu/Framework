@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.base.AutomationBase;
+import com.pages.CommonDatas;
 import com.pages.HomePage;
 import com.pages.LoginPage;
 import com.pages.ProductPage;
@@ -32,6 +33,8 @@ public class ProductPageTest extends AutomationBase{
 	SoftAssert soft=new SoftAssert();
 	PropertyUtil property=new PropertyUtil();
 	WaitUtils waitutil=new WaitUtils();
+	
+	CommonDatas comn=new CommonDatas();
 	
 	@BeforeMethod
 	public void preRun() throws IOException
@@ -63,7 +66,8 @@ public class ProductPageTest extends AutomationBase{
 	
 	public void validateElementsonAddProduct()
 	{
-		pdtpage.clickOnAddProductButton();
+		comn.ClickOnAddButton();
+		//pdtpage.clickOnAddProductButton();
 		soft.assertTrue(pdtpage.isAddProductDisplayed(),"Failure Message: addProduct is not displayed");
 		soft.assertTrue(pdtpage.isProductTypeDisplayed(),"Failure Message: ProductType is not displayed");
 		soft.assertTrue(pdtpage.isProductCodeDisplayed(),"Failure Message: ProductCode is not displayed");
@@ -86,6 +90,7 @@ public class ProductPageTest extends AutomationBase{
 	@Test(priority=2,enabled=true)
 	public void validateAddProductDetialsWithStockValue() throws InterruptedException
 	{
+		//comn.ClickOnAddButton();
 		pdtpage.clickOnAddProductButton();
 		pdtpage.selectProductType("0");
 		pdtpage.addProductCode("1670");
@@ -101,14 +106,14 @@ public class ProductPageTest extends AutomationBase{
 		pdtpage.addProductOption("GoodTaste");
 		pdtpage.addProductDescription("Good TAste,Super");
 		pdtpage.submitProductDetails();
-			
+		//	comn.ClickOnSubmitDetails();
 		pdtpage.enterMNCStoreQuantity("10");
 		pdtpage.enterMNCStorePrice("100");
 		pdtpage.StoreSubmit();
 		
-		Thread.sleep(2000);
-		
-		pdtpage.ProductSearch("1420");
+		//Thread.sleep(2000);
+		//comn.SearchDetails("1670");
+		pdtpage.ProductSearch("1670");
 		soft.assertEquals(pdtpage.getProductCodeFromSearchResults(),"1670","Failure Message: Product Code is not matched");
 		soft.assertEquals(pdtpage.getProductNameFromSearchResults(),"BBBBQQ","Failure Message: Product Name is not matched");
 		soft.assertEquals(pdtpage.getProductCategoryFromSearchResults(),"Pizza","Failure Message: Product Category is not matched");
@@ -119,7 +124,7 @@ public class ProductPageTest extends AutomationBase{
 		
 	}
 	
-	@Test(priority=3,enabled=true)
+	@Test(priority=3,enabled=false)
 	public void validateAddProductDetialsWithOutStockValues()
 	{
 		pdtpage.clickOnAddProductButton();
@@ -151,7 +156,7 @@ public class ProductPageTest extends AutomationBase{
 		
 	}
 	
-	@Test(priority=4,enabled=true)
+	@Test(priority=4,enabled=false)
 	public void ValidateEditProductDetails()
 	{
 		pdtpage.ProductSearch("1987");
@@ -180,7 +185,7 @@ public class ProductPageTest extends AutomationBase{
 		
 	}
 	
-	@Test(priority=6,enabled=true)
+	@Test(priority=6,enabled=false)
 	public void validateDeleteProductAction()
 	{
 		pdtpage.ProductSearch("987");

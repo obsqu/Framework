@@ -3,6 +3,7 @@ package com.test;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -52,50 +53,61 @@ public class CustomerTestPage extends AutomationBase{
 	}
 	
 	@Test(priority=1,enabled=true)
-	public void validateAddCustomerDetails() {
+	public void validateAddCustomerDetails() throws Exception {
 		
-		common.ClickOnAddButton();
+		//common.ClickOnAddButton();
+		custmpg.ClickOnAddButton();
 		
+		custmpg.clickOnCustomername();
+		waitutil.waitForAnElement(driver,By.xpath("//input[@id='CustomerName']"), 10);
+		custmpg.clickOnPhoneNumber();
 		custmpg.enterValueForCustomerName("Miraj");
+		waitutil.waitForAnElement(driver,By.xpath("//input[@id='CustomerPhone']"), 10);
 		custmpg.enterValueForCustomerPhoneNumber("7654356789");
 		custmpg.enterValueForCustomerMail("miraj@gmail.com");
-		custmpg.enterValueForCustomerDiscount("10");
-		common.ClickOnSubmitDetails();
-		
-		common.SearchDetails("Miraj");
+		custmpg.enterValueForCustomerDiscount("10%");
+		//common.ClickOnSubmitDetails();
+		custmpg.ClickSubmitCustomerDetails();
+		custmpg.SearchDetails("Miraj");
+		//common.ClickOnSearchDetails("Miraj");
 		soft.assertEquals(custmpg.getCustomerNameFromSearchResult(),"Miraj","Failure message : Customer name not matched");
 		soft.assertEquals(custmpg.getCustomerPhoneNumberFromSearchResult(),"7654356789","Failure message : Customer phone not matched");
 		soft.assertEquals(custmpg.getCustomerEmailidFromSearchResult(),"miraj@gmail.com","Failure message : Customer mail not matched");
-		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"10","Failure message : Customer discount not matched");
+		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"10%","Failure message : Customer discount not matched");
 		soft.assertAll();
 	}
 	
 	@Test(priority=3,enabled=false)
 	public void validateDeleteCustomerData() {
 		
-		common.SearchDetails("Miraj");
+		custmpg.SearchDetails("Gifty");
+		//common.ClickOnSearchDetails("Arya");
 		custmpg.clickDeleteCustomerDataButton();
-		common.SearchDetails("Miraj");
+		
+		custmpg.SearchDetails("Gifty");
+		//common.ClickOnSearchDetails("Arya");
 		Assert.assertEquals(custmpg.getCustomerNameFromSearchResult(),"No matching records found","Failure message : custmer name not matched");
 		
 	}
 	
 	@Test(priority=2,enabled=false)
-	public void validateEditButtonForcustomer() {
+	public void validateEditButtonForCustomer() {
 		
-		common.SearchDetails("Miraj");
+		custmpg.SearchDetails("Eva");
+		//common.ClickOnSearchDetails("Jasmin");
 		custmpg.clickEditCustomerDataButton();
-		custmpg.enterValueForCustomerName("Shibina");
+		custmpg.enterValueForCustomerName("Naseera");
 		custmpg.enterValueForCustomerPhoneNumber("9857463565");
 		custmpg.enterValueForCustomerMail("mir@gmail.com");
-		custmpg.enterValueForCustomerDiscount("20");
+		custmpg.enterValueForCustomerDiscount("20%");
 		
 		custmpg.clickSubmitEditCustmrDetails();
-		common.SearchDetails("Miraj");
-		soft.assertEquals(custmpg.getCustomerNameFromSearchResult(),"Shibina","Failure message : Customer name not matched");
+		custmpg.SearchDetails("Naseera");
+		//common.ClickOnSearchDetails("Shibina");
+		soft.assertEquals(custmpg.getCustomerNameFromSearchResult(),"Naseera","Failure message : Customer name not matched");
 		soft.assertEquals(custmpg.getCustomerPhoneNumberFromSearchResult(),"9857463565","Failure message : Customer phone not matched");
 		soft.assertEquals(custmpg.getCustomerEmailidFromSearchResult(),"mir@gmail.com","Failure message : Customer mail not matched");
-		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"20","Failure message : Customer discount not matched");
+		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"20%","Failure message : Customer discount not matched");
 		soft.assertAll();
 	}
 
