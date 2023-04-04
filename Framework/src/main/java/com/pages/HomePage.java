@@ -48,6 +48,11 @@ public class HomePage {
 	@FindBy(xpath="//span[text()='Suppliers']")
 	WebElement supplierlink;
 	
+	@FindBy(xpath="(//span[text()='Product'])[2]")
+	WebElement prdtCatgrylink;
+	@FindBy(xpath="(//span[text()='Expense'])[2]")
+	WebElement expnsCatgrylink;
+	
 	public  HomePage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -156,20 +161,23 @@ public class HomePage {
 	   return new SupplierPage(driver);
    }
 
-   /*public CustomersPage navigateToCutomersPage() {
-	   elementutils.clickonTheElement(driver,peoplelink);
-	   elementutils.clickonTheElement(driver,customerlink);
-	   return new CustomersPage(driver);
+   public ExpensePage navigateToExpensesPage() {
+	   elementutils.clickonTheElement(driver,expenselink);
+	   
+	   return new ExpensePage(driver);
    }
    
-   /*public ProductPage navigateToPdtPage() {
-	     elementutils.clickonTheElement(driver, product);
-	    return new ProductPage(driver);
-	}
+   public ProductCategoryPage navigateToProductCategoryPage() {
+	   elementutils.clickonTheElement(driver,categorylink);
+	   elementutils.clickonTheElement(driver,prdtCatgrylink);
+	   return new ProductCategoryPage(driver);
+   }
    
-   public ProductPage navigateToPdtPage() {
-	     elementutils.clickonTheElement(driver, product);
-	    return new ProductPage(driver);
-	}*/
+   /*public ProductCategoryPage navigateToProductCategoryPage() {
+	   elementutils.clickonTheElement(driver,categorylink);
+	   elementutils.clickonTheElement(driver,prdtCatgrylink);
+	   return new ProductCategoryPage(driver);
+   }
+  */
 
 }

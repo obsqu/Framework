@@ -99,7 +99,7 @@ public class WaiterPageTest extends AutomationBase{
 	}
 	
 	@Test(priority=2,enabled=false)
-	public void validateEditButoonForWaiter() {
+	public void validateEditButtonForWaiterDetails() {
 		
 		watrpg.searchWaiterLink("Miraj");
 		watrpg.clickEditWaiterDataButton();
