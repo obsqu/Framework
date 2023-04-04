@@ -173,11 +173,11 @@ public class HomePage {
 	   return new ProductCategoryPage(driver);
    }
    
-   /*public ProductCategoryPage navigateToProductCategoryPage() {
+   public ExpenseCategoryPage navigateToExpenseCategoryPage() {
 	   elementutils.clickonTheElement(driver,categorylink);
 	   elementutils.clickonTheElement(driver,prdtCatgrylink);
-	   return new ProductCategoryPage(driver);
+	   return new ExpenseCategoryPage(driver);
    }
-  */
+  
 
 }

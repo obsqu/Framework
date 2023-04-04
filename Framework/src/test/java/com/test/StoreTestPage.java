@@ -52,7 +52,24 @@ public class StoreTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=1,enabled=true)
+@Test(priority=1,enabled=true)
+	
+	public void validateElementsonAddProduct()
+	{
+		storepg.clickOnAddStoreButton();
+		
+		soft.assertTrue(storepg.isStoreNameDisplayed(),"Failure Message: StoreName is not displayed");
+		soft.assertTrue(storepg.isStoreEmailDisplayed(),"Failure Message: StoreEmail is not displayed");
+		soft.assertTrue(storepg.isStorePhoneDisplayed(),"Failure Message: Storephone is not displayed");
+		soft.assertTrue(storepg.isStoreCountryDisplayed(),"Failure Message: StoreCountry is not displayed");
+		soft.assertTrue(storepg.isStoreCityDisplayed(),"Failure Message: StoreCity is not displayed");
+		soft.assertTrue(storepg.isStoreAddressDisplayed(),"Failure Message: StoreAddress is not displayed");
+		soft.assertTrue(storepg.isStoreCustomFooterDisplayed(),"Failure Message: StoreCustomFoote is not displayed");
+		soft.assertAll();
+		
+	}	
+		
+	@Test(priority=2,enabled=true)
 	public void validateAddDatasToStore()
 	{
 		storepg.clickOnAddStoreButton();
@@ -78,7 +95,7 @@ public class StoreTestPage extends AutomationBase{
 		
 	}
 	
-    @Test(priority=3,enabled=true)
+    @Test(priority=4,enabled=true)
 	public void validateDeleteStoreDatas() {
 		
 		storepg.searchStoreLink("SNStores");
@@ -90,7 +107,7 @@ public class StoreTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=2,enabled=true)
+	@Test(priority=3,enabled=true)
 	public void validateEditStoreDetails() {
 		
 		storepg.searchStoreLink("345487643");

@@ -3,7 +3,6 @@ package com.test;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -12,22 +11,22 @@ import org.testng.asserts.SoftAssert;
 
 import com.base.AutomationBase;
 import com.pages.CommonDatas;
-import com.pages.ExpensePage;
+import com.pages.ExpenseCategoryPage;
 import com.pages.HomePage;
 import com.pages.LoginPage;
-import com.pages.ProductCategoryPage;
+
 import com.utilities.BrowserUtils;
 import com.utilities.ExcelUtils;
 import com.utilities.PropertyUtil;
 import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
 
-public class ProductCategoryTestPage extends AutomationBase{
+public class ExpenseCategoryTestPage extends AutomationBase{
 
 	WebDriver driver;
 	LoginPage loginpg;
 	HomePage homepg;
-	ProductCategoryPage pdtctgry;
+	ExpenseCategoryPage expnsctgry;
 	BrowserUtils brwsrUtil=new BrowserUtils();
 	WebElementUtils elementutil=new WebElementUtils();
 	SoftAssert soft=new SoftAssert();
@@ -50,68 +49,65 @@ public class ProductCategoryTestPage extends AutomationBase{
 		
 		loginpg=new LoginPage(driver);
 		homepg=new HomePage(driver);
-		pdtctgry=homepg.navigateToProductCategoryPage();
+		expnsctgry=homepg.navigateToExpenseCategoryPage();
 		
 			
 	}
 	
 	@Test(priority=1,enabled=false)
-	public void ValidateTheMenuItemsDisplayedAddProductPage()
+	public void ValidateTheMenuItemsDisplayedAddExpensePage()
 	{
 		
 		
-		pdtctgry.ClickOnAddCategoryButton();
+		expnsctgry.ClickOnAddCategoryButton();
 		
-		boolean flagdt=pdtctgry.isCategoryNameDisplayed();
+		boolean flagdt=expnsctgry.isCategoryNameDisplayed();
 		Assert.assertTrue(flagdt,"Fail: CategoryName field is not displayed");
-		pdtctgry.ClickOnCloseButton();
+		expnsctgry.ClickOnCloseButton();
 	}
 	
 	@Test(priority=2,enabled=true)
-	public void validateAddProductCategoryDetails() throws Exception {
+	public void validateAddExpenseCategoryDetails() throws Exception {
 		
 		//comon.ClickOnAddButton();
 		
-		pdtctgry.ClickOnAddCategoryButton();
-		pdtctgry.ClickOnCategoryName();
+		expnsctgry.ClickOnAddCategoryButton();
+		expnsctgry.ClickOnCategoryName();
 		//waitutil.waitForAnElement(driver,By.id("//input[@id='CategoryName']"), 10);
 		
-		pdtctgry.enterValueForCategryName("Broasted");
+		expnsctgry.enterValueForCategryName("Broasted");
 		
-        pdtctgry.ClickOnSubmitCategoryValues();
+        expnsctgry.ClickOnSubmitCategoryValues();
 		
 		//comon.ClickOnSubmitDetails();
 		//comon.ClickOnSearchDetails("HAI");
 		brwsrUtil.refreshPage(driver);
-		pdtctgry.ClickOnSearchCategoryLink("Broasted");
+		expnsctgry.ClickOnSearchCategoryLink("Broasted");
 		
-		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"Broasted","Failure message : category name not matched");
+		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Broasted","Failure message : category name not matched");
 }
 	
 	@Test(priority=3,enabled=false)
 	public void validateEditButtonForCategoryDetails() {
 	
-		pdtctgry.ClickOnSearchCategoryLink("Munch");
-		pdtctgry.ClickOnCategoryEditButton();
-		pdtctgry.enterValueForCategryName("Pizza");
-		pdtctgry.ClickOnSubmitEditButton();
+		expnsctgry.ClickOnSearchCategoryLink("Munch");
+		expnsctgry.ClickOnCategoryEditButton();
+		expnsctgry.enterValueForCategryName("Pizza");
+		expnsctgry.ClickOnSubmitEditButton();
 		brwsrUtil.refreshPage(driver);
-		pdtctgry.ClickOnSearchCategoryLink("Pizza");
-		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"Pizza","Failure message : category name not matched");
+		expnsctgry.ClickOnSearchCategoryLink("Pizza");
+		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Pizza","Failure message : category name not matched");
 	}	
 	
 	@Test(priority=4,enabled=false)
 	public void validateDeleteWaiterData() {
 		
-		pdtctgry.ClickOnSearchCategoryLink("burger");
-		pdtctgry.ClickOnDeleteButton();
+		expnsctgry.ClickOnSearchCategoryLink("burger");
+		expnsctgry.ClickOnDeleteButton();
 		//brwsrUtil.refreshPage(driver);
-		pdtctgry.ClickOnSearchCategoryLink("burger");
-		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"No matching records found","Failure message : category name not matched");
+		expnsctgry.ClickOnSearchCategoryLink("burger");
+		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"No matching records found","Failure message : category name not matched");
 		
 	}
-	
-
-	
 	
 }

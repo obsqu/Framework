@@ -62,6 +62,42 @@ public class StorePage {
 		PageFactory.initElements(driver,this);
 	}
 	
+	public boolean isStoreNameDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeName);
+		
+}
+ public boolean isStoreEmailDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeEmailid);
+		
+}
+ public boolean isStorePhoneDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storePhoneNumbr);
+		
+}
+ public boolean isStoreCountryDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeCountry);
+		
+}
+ public boolean isStoreCityDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeCity);
+		
+}
+ public boolean isStoreAddressDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeAddress);
+		
+}
+ public boolean isStoreCustomFooterDisplayed() {
+		
+		return elementutils.isElementDisplayed(driver,storeCustomFootr);
+		
+}
+ 
 	
 	public void clickOnAddStoreButton()
 	{
