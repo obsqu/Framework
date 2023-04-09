@@ -14,47 +14,49 @@ public class StorePage {
 	
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addStoreButn;
+	public WebElement addStoreButn;
+	@FindBy(xpath="//button[text()='Close']")
+	public WebElement closeStoreButn;
 	
 	@FindBy(xpath="//input[@name='name']")
-	WebElement storeName;
+	public WebElement storeName;
 	@FindBy(xpath="//input[@id='email']")
-	WebElement storeEmailid;
+	public WebElement storeEmailid;
 	@FindBy(xpath="//input[@id='StorePhone']")
-	WebElement storePhoneNumbr;
+	public WebElement storePhoneNumbr;
 	@FindBy(xpath="//input[@id='Country']")
-	WebElement storeCountry;
+	public WebElement storeCountry;
 	@FindBy(xpath="//input[@id='City']")
-	WebElement storeCity;
+	public WebElement storeCity;
 	@FindBy(xpath="//input[@id='Adresse']")
-	WebElement storeAddress;
+	public WebElement storeAddress;
 	@FindBy(xpath="//input[@id='CustomeFooter']")
-	WebElement storeCustomFootr;
+	public WebElement storeCustomFootr;
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement storeSubmitBtn;
+	public WebElement storeSubmitBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement storeDeleteBtn;
+	public WebElement storeDeleteBtn;
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement storeEditBtn;
+	public WebElement storeEditBtn;
 	@FindBy(xpath="//button[@class='btn btn-green col-md-6 flat-box-btn waves-effect waves-button']")
-	WebElement submitEditBtn;
+	public WebElement submitEditBtn;
 	@FindBy(xpath="(//a[@class='btn btn-default'])[3]")
-	WebElement storeManageTblButn;
+	public WebElement storeManageTblButn;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement storename_searchresult;
+	public WebElement storename_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement storeemailid_searchresult;
+	public WebElement storeemailid_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement storephoneno_searchresult;
+	public WebElement storephoneno_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement storecountry_searchresult;
+	public WebElement storecountry_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[5]")
-	WebElement storecity_searchresult;
+	public WebElement storecity_searchresult;
 	
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement storeSearch;
+	public WebElement storeSearch;
 	
 	public  StorePage(WebDriver driver)
 	{
@@ -103,14 +105,15 @@ public class StorePage {
 	{
 		elementutils.clickonTheElement(driver,addStoreButn);
 	}
+	public void clickOnCloseStoreButton()
+	{
+		elementutils.clickonTheElement(driver,closeStoreButn);
+	}
 	public void clickOnStoreName()
 	{
 		elementutils.clickonTheElement(driver,storeName);
 	}
-	public void clickOnStoreMail()
-	{
-		elementutils.clickonTheElement(driver,storeEmailid);
-	}
+	
 	public void enterValueToStoreName(String storeNamevl)
 	{
 		elementutils.cleartheFieldd(driver,storeName);

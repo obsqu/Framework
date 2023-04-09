@@ -13,29 +13,29 @@ public class ProductCategoryPage {
 	WebElementUtils elementutil=new WebElementUtils();
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addCategoryButn;
+	public WebElement addCategoryButn;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement SearchBtn;
+	public WebElement SearchBtn;
 	
 	@FindBy(xpath="//input[@id='CategoryName']")
-	WebElement categryName;
+	public WebElement categryName;
 	
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement catgrySubmitBtn;
+	public WebElement catgrySubmitBtn;
 	@FindBy(xpath="//button[text()='Close']")
-	WebElement catgryClosBtn;
+	public WebElement catgryClosBtn;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement catgryname_searchresult;
+	public WebElement catgryname_searchresult;
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement catgryDeleteBtn;
+	public WebElement catgryDeleteBtn;
 	@FindBy(xpath="//a[@class='btn btn-danger']")
-	WebElement yesDltBtn;
+	public WebElement yesDltBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement catgryEditBtn;
+	public WebElement catgryEditBtn;
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement catgrySubmitEditBtn;
+	public WebElement catgrySubmitEditBtn;
 	
 	public ProductCategoryPage(WebDriver driver) {
 		this.driver=driver;

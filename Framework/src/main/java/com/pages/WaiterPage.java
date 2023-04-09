@@ -16,47 +16,47 @@ public class WaiterPage {
 	GenericUtils droputil=new GenericUtils();
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addWaiterButn;
+    public WebElement addWaiterButn;
 	
 	@FindBy(xpath="//input[@id='WaiterName']")
-	WebElement waiterName;
+	public WebElement waiterName;
 	@FindBy(xpath="//input[@id='WaiterPhone']")
-	WebElement waiterPhoneNo;
+	public WebElement waiterPhoneNo;
 	@FindBy(xpath="//input[@id='WaiterEmail']")
-	WebElement waiterEmail;
+	public WebElement waiterEmail;
 	@FindBy(xpath="//select[@name='store_id']")
-	WebElement waiterStore;
+	public WebElement waiterStore;
 	
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement waiterSubmitBtn;
+	public WebElement waiterSubmitBtn;
 	@FindBy(xpath="//button[@class='btn btn-default']")
-	WebElement waiterCloseBtn;
+	public WebElement waiterCloseBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement waiterDeleteBtn;
+	public WebElement waiterDeleteBtn;
 	@FindBy(xpath="//a[text()='Yes, delete it!']")
-	WebElement yesDeleteWaiter;
+	public WebElement yesDeleteWaiter;
 	
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement waiterEditBtn;
+	public WebElement waiterEditBtn;
 	@FindBy(xpath="//button[@class='btn btn-green col-md-6 flat-box-btn waves-effect waves-button']")
-	WebElement submitEditBtn;
+	public WebElement submitEditBtn;
 	
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement waitername_searchresult;
+	public WebElement waitername_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement waiterphonenum_searchresult;
+	public WebElement waiterphonenum_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement waiteremail_searchresult;
+	public WebElement waiteremail_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement waiterstore_searchresult;
+	public WebElement waiterstore_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[5]")
-	WebElement waitercreateddate_searchresult;
+	public WebElement waitercreateddate_searchresult;
 	
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement waiterSearch;
+	public WebElement waiterSearch;
 	
 	
 	public WaiterPage(WebDriver driver) {
@@ -67,6 +67,32 @@ public class WaiterPage {
 	{
 		elementutil.clickonTheElement(driver,addWaiterButn);
 	}
+	public void ClickOnCloseWaiterButton()
+	{
+		elementutil.clickonTheElement(driver,waiterCloseBtn);
+	}
+	
+public boolean isWaiterNameDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,waiterName);
+		
+}
+ public boolean isWaiterEmailDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,waiterEmail);
+		
+}
+ public boolean isWaiterPhoneDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,waiterPhoneNo);
+		
+}
+ public boolean isWaiterStoreDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,waiterStore);
+		
+}
+ 
 	
 	public void clickOnWaitername() {
 		elementutil.clickonTheElement(driver,waiterName);

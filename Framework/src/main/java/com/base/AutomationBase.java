@@ -78,10 +78,12 @@ public class AutomationBase {
 			throw new Exception(e);
 		}
 	}
-	
-	public WebDriver getDriver()
-	{
-	   return driver;	
+
+	public  WebDriver getDriver() {
+		
+		return driver;
 	}
+	
+	
 
 }

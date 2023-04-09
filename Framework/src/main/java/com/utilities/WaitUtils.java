@@ -37,16 +37,16 @@ public class WaitUtils {
 	 * @throws Exception 
 	 */
 	
-	public WebElement waitForAnElement(WebDriver driver,By elementLocator,int timeOut) throws Exception {
+	public WebElement waitForAnElement(WebDriver driver,WebElement element,int timeOut) throws Exception {
 		
-		WebElement element = null;
+	
 		try {
 			wait= new WebDriverWait(driver,Duration.ofSeconds(timeOut));
-			element=wait.until(ExpectedConditions.presenceOfElementLocated(elementLocator));
+			wait.until(ExpectedConditions.presenceOfElementLocated((By) element));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCause());
-			throw new Exception("");
+			//throw new Exception("");
 		}
 		return element;
 	}
@@ -74,10 +74,11 @@ public class WaitUtils {
 	 * @param timeOut
 	 */
 	
-	public void waitForVisibilityOfElement(WebDriver driver,By locator, int timeOut) {
+	public void waitForVisibilityOfElement(WebDriver driver,WebElement element, int timeOut) {
 		try {
 			wait=new WebDriverWait(driver,Duration.ofSeconds(timeOut));
-			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCause());
@@ -91,6 +92,22 @@ public class WaitUtils {
 	public void pageLoadTimeOut(WebDriver driver,int timeOut) {
 		try {
 			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(timeOut));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+		}
+	}
+	
+	/**This method is to provide wait for element to clickable
+	 * 
+	 * @param driver
+	 * @param element
+	 * @param timeOut
+	 */
+	public void waitForElementToBeClickable(WebDriver driver,WebElement element, int timeOut) {
+		try {
+			wait=new WebDriverWait(driver,Duration.ofSeconds(timeOut));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			System.out.println(e.getCause());

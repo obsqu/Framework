@@ -26,7 +26,7 @@ public class ExcelUtils {
 	/**This method to get count row
 	 * 
 	 */
-	public static int getRowCount() {
+	public  int getRowCount() {
 		int rowCount=0;
 		try {
 			rowCount=sheet.getPhysicalNumberOfRows();
@@ -40,7 +40,7 @@ public class ExcelUtils {
 	 * 
 	 * @return
 	 */
-	public static int getColCount() {
+	public  int getColCount() {
 		int colCount=0;
 		try {
 			colCount=sheet.getRow(0).getLastCellNum();
@@ -59,7 +59,7 @@ public class ExcelUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String readStringData(String sheetname,int rowNum,int colNum) throws IOException
+	public  String readStringData(String sheetname,int rowNum,int colNum) throws IOException
 	{
 		
 		
@@ -80,7 +80,7 @@ public class ExcelUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static int readIntegerData(String fileName,int rowNum,int colNum,String sheetname) throws IOException {
+	public  int readIntegerData(String fileName,int rowNum,int colNum,String sheetname) throws IOException {
 		String excelPath=filePath+fileName;
 		workbook=new XSSFWorkbook(excelPath);
 		sheet=workbook.getSheet(sheetname);

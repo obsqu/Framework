@@ -53,7 +53,7 @@ public class ExpenseTestPage extends AutomationBase{
 			
 	}
 	
-	@Test(priority=1,enabled=false)
+	//@Test(priority=1,enabled=true)
 	public void ValidateTheMenuItemsDisplayedAddExpensePage()
 	{
 		
@@ -85,7 +85,7 @@ public class ExpenseTestPage extends AutomationBase{
 	}	
 		
 	
-	@Test(priority=2,enabled=false)
+	//@Test(priority=2,enabled=true)
 	public void validateAddExpenseDetails() throws Exception {
 		
 		//comon.ClickOnAddButton();
@@ -114,10 +114,10 @@ public class ExpenseTestPage extends AutomationBase{
 		soft.assertAll();
 	}
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void validateEditButtonForExpenseDetails() {
 		
-		expnspg.ClickOnSearchExpenseLink("Shibi");
+		expnspg.ClickOnSearchExpenseLink("Shibina");
 		expnspg.ClickOnExpenseEditButton();
 		expnspg.enterValueForExpenseDate("05/04/2023");
 		expnspg.enterValueForExpenseReference("Mirus");
@@ -127,7 +127,7 @@ public class ExpenseTestPage extends AutomationBase{
 		expnspg.enterValueForExpenseNote("Taste");
 		
 		expnspg.ClickOnSubmitEditButton();
-		expnspg.ClickOnSearchExpenseLink("Shibna");
+		expnspg.ClickOnSearchExpenseLink("Mirus");
 		
 		soft.assertEquals(expnspg.getExpenseDateFromSearchResult(),"05/04/2023","Failure message : expense date not matched");
 		soft.assertEquals(expnspg.getExpenseReferenseFromSearchResult(),"Mirus","Failure message : expense refernse not matched");
@@ -138,7 +138,7 @@ public class ExpenseTestPage extends AutomationBase{
 		soft.assertAll();
 	}
 	
-	@Test(priority=4,enabled=true)
+	//@Test(priority=4,enabled=true)
 	public void validateDeleteWaiterData() {
 		
 		expnspg.ClickOnSearchExpenseLink("Arun");

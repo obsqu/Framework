@@ -54,7 +54,7 @@ public class ExpenseCategoryTestPage extends AutomationBase{
 			
 	}
 	
-	@Test(priority=1,enabled=false)
+	@Test(priority=1,enabled=true)
 	public void ValidateTheMenuItemsDisplayedAddExpensePage()
 	{
 		
@@ -73,39 +73,38 @@ public class ExpenseCategoryTestPage extends AutomationBase{
 		
 		expnsctgry.ClickOnAddCategoryButton();
 		expnsctgry.ClickOnCategoryName();
-		//waitutil.waitForAnElement(driver,By.id("//input[@id='CategoryName']"), 10);
-		
-		expnsctgry.enterValueForCategryName("Broasted");
+		String expctgry=excelutil.readStringData("ExpenseCategory",2,1);
+		expnsctgry.enterValueForCategryName(expctgry);
 		
         expnsctgry.ClickOnSubmitCategoryValues();
 		
 		//comon.ClickOnSubmitDetails();
 		//comon.ClickOnSearchDetails("HAI");
 		brwsrUtil.refreshPage(driver);
-		expnsctgry.ClickOnSearchCategoryLink("Broasted");
+		expnsctgry.ClickOnSearchCategoryLink("Expt_Catg");
 		
-		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Broasted","Failure message : category name not matched");
+		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Expt_Catg","Failure message : category name not matched");
 }
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void validateEditButtonForCategoryDetails() {
 	
-		expnsctgry.ClickOnSearchCategoryLink("Munch");
+		expnsctgry.ClickOnSearchCategoryLink("cutlet");
 		expnsctgry.ClickOnCategoryEditButton();
-		expnsctgry.enterValueForCategryName("Pizza");
+		expnsctgry.enterValueForCategryName("Broasted");
 		expnsctgry.ClickOnSubmitEditButton();
 		brwsrUtil.refreshPage(driver);
-		expnsctgry.ClickOnSearchCategoryLink("Pizza");
-		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Pizza","Failure message : category name not matched");
+		expnsctgry.ClickOnSearchCategoryLink("Broasted");
+		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"Broasted","Failure message : category name not matched");
 	}	
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void validateDeleteWaiterData() {
 		
-		expnsctgry.ClickOnSearchCategoryLink("burger");
+		expnsctgry.ClickOnSearchCategoryLink("Broasted");
 		expnsctgry.ClickOnDeleteButton();
 		//brwsrUtil.refreshPage(driver);
-		expnsctgry.ClickOnSearchCategoryLink("burger");
+		expnsctgry.ClickOnSearchCategoryLink("Broasted");
 		Assert.assertEquals(expnsctgry.getCategryNameFromSearchResult(),"No matching records found","Failure message : category name not matched");
 		
 	}

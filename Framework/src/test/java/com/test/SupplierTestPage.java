@@ -17,6 +17,7 @@ import com.pages.LoginPage;
 import com.pages.ProductPage;
 import com.pages.SupplierPage;
 import com.utilities.BrowserUtils;
+import com.utilities.ExcelUtils;
 import com.utilities.PropertyUtil;
 import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
@@ -32,13 +33,13 @@ public class SupplierTestPage extends AutomationBase{
 	SoftAssert soft=new SoftAssert();
 	PropertyUtil property=new PropertyUtil();
 	WaitUtils waitutil=new WaitUtils();
-	
+	ExcelUtils excelutil;
 	CommonDatas comon=new CommonDatas();
 	
 	@BeforeMethod
 	public void preRun() throws IOException
 	{
-		
+		excelutil= new ExcelUtils("RestaurantDatas.xlsx");
         driver=getDriver();
 		
 		Properties allProp=property.getAllProperties("config.properties");
@@ -52,49 +53,71 @@ public class SupplierTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=1,enabled=true)
+  @Test(priority=1,enabled=true)
+	
+	public void validateElementsonAddProduct()
+	{
+		splrpg.ClickOnAddButton();
+		waitutil.waitForElementToBeClickable(driver,splrpg.suplierName,20);
+		
+		soft.assertTrue(splrpg.isSupplierNameDisplayed(),"Failure Message: SupplierName is not displayed");
+		soft.assertTrue(splrpg.isSupplierEmailDisplayed(),"Failure Message: SupplierEmail is not displayed");
+		soft.assertTrue(splrpg.isSupplierPhoneDisplayed(),"Failure Message: Supplierphone is not displayed");
+		soft.assertTrue(splrpg.isSupplierNoteDisplayed(),"Failure Message: SupplierNote is not displayed");
+		
+		splrpg.clickOnCloseSupplierButton();
+		soft.assertAll();
+		
+	}	
+	@Test(priority=2,enabled=true)
 	public void validateAddSupplierDetails() throws Exception {
 		
 		//comon.ClickOnAddButton();
+		String suplrnm=excelutil.readStringData("Supplier",2,1);
+		String suplrphone=excelutil.readStringData("Supplier",2,2);
+		String suplremail=excelutil.readStringData("Supplier",2,3);
+		String suplrnote=excelutil.readStringData("Supplier",2,4);
+		
 		
 		splrpg.ClickOnAddButton();
 		splrpg.clickOnSupplierName();
-		//waitutil.waitForAnElement(driver,By.id("//input[@id='SupplierName']"), 10);
-		splrpg.enterSupplierName("Miraj");
-		splrpg.enterSupplierPhone("12324");
-		splrpg.enterSupplierMail("ad@gmail.com");
-		splrpg.enterSupplierNote("JHDYDGC");
+		waitutil.waitForElementToBeClickable(driver, splrpg.suplierName,20);
+		splrpg.enterSupplierName(suplrnm);
+		waitutil.waitForVisibilityOfElement(driver,splrpg.suplierPhone,20);
+		splrpg.enterSupplierPhone(suplrphone);
+		splrpg.enterSupplierMail(suplremail);
+		splrpg.enterSupplierNote(suplrnote);
 		splrpg.ClickOnSubmitDatas();
 		
 		//comon.ClickOnSubmitDetails();
 		//comon.ClickOnSearchDetails("HAI");
 		
-		splrpg.ClickOnSearchDetails("Miraj");
-		soft.assertEquals(splrpg.getSuplierNameFromSearchResult(),"Miraj","Failure message : suplier name not matched");
-		soft.assertEquals(splrpg.getSuplierPhoneNumberFromSearchResult(),"12324","Failure message : suplier phone not matched");
-		soft.assertEquals(splrpg.getSuplierEmailidFromSearchResult(),"ad@gmail.com","Failure message : suplier mail not matched");
+		splrpg.ClickOnSearchDetails("Bilal");
+		soft.assertEquals(splrpg.getSuplierNameFromSearchResult(),"Bilal","Failure message : suplier name not matched");
+		soft.assertEquals(splrpg.getSuplierPhoneNumberFromSearchResult(),"65830489","Failure message : suplier phone not matched");
+		soft.assertEquals(splrpg.getSuplierEmailidFromSearchResult(),"bilal@gmail.com","Failure message : suplier mail not matched");
 		soft.assertAll();
 	}
 	
-	@Test(priority=3,enabled=true)
+	@Test(priority=4,enabled=true)
 	public void validateDeleteWaiterData() {
 		
 		//comon.ClickOnSearchDetails("Miraj");
 		
-		splrpg.ClickOnSearchDetails("gdf");
+		splrpg.ClickOnSearchDetails("Shibina");
 		splrpg.clickDeleteSuplirDataButton();
-		splrpg.ClickOnSearchDetails("gdf");
+		splrpg.ClickOnSearchDetails("Shibina");
 		//comon.ClickOnSearchDetails("Miraj");
 		Assert.assertEquals(splrpg.getSuplierNameFromSearchResult(),"No matching records found","Failure message : Supplier name not matched");
 		
 	}
 	
-	@Test(priority=2,enabled=true)
-	public void validateEditButoonForWaiter() {
+	@Test(priority=3,enabled=true)
+	public void validateEditButtonForWaiter() {
 		
 		//comon.ClickOnSearchDetails("HAI");
 		
-		splrpg.ClickOnSearchDetails("HAI");
+		splrpg.ClickOnSearchDetails("Miraj");
 		splrpg.clickEditSuplirDataButton();
 		splrpg.enterSupplierName("Shibina");
 		splrpg.enterSupplierPhone("9857463523");

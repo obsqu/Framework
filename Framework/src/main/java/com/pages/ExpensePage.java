@@ -15,50 +15,50 @@ public class ExpensePage {
 	GenericUtils droputil=new GenericUtils();
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addExpenseButn;
+	public WebElement addExpenseButn;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement SearchBtn;
+	public WebElement SearchBtn;
 	
 	@FindBy(xpath="//input[@id='Date']")
-	WebElement expenseDate;
+	public WebElement expenseDate;
 	@FindBy(xpath="//input[@id='Reference']")
-	WebElement expenseReference;
+	public WebElement expenseReference;
 	@FindBy(xpath="//select[@id='Category']")
-	WebElement expenseCatgry;
+	public WebElement expenseCatgry;
 	@FindBy(xpath="//select[@id='store_id']")
-	WebElement expenseStr;
+	public WebElement expenseStr;
 	@FindBy(xpath="//input[@id='Amount']")
-	WebElement expenseAmount;
+	public WebElement expenseAmount;
 	@FindBy(xpath="//div[@class='note-editable panel-body']")
-	WebElement expenseNote;
+	public WebElement expenseNote;
 	
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement expenseSubmitBtn;
+	public WebElement expenseSubmitBtn;
 	@FindBy(xpath="//button[text()='Close']")
-	WebElement expenseClosBtn;
+	public WebElement expenseClosBtn;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement expensedate_searchresult;
+	public WebElement expensedate_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement expensereferense_searchresult;	
+	public WebElement expensereferense_searchresult;	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement expensestore_searchresult;
+	public WebElement expensestore_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement expensecategry_searchresult;
+	public WebElement expensecategry_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[5]")
-	WebElement expenseamount_searchresult;
+	public WebElement expenseamount_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[6]")
-	WebElement expenscreated_searchresult;
+	public WebElement expenscreated_searchresult;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement expenseDeleteBtn;
+	public WebElement expenseDeleteBtn;
 	@FindBy(xpath="//button[text()='Yes, delete it!']")
-	WebElement yesDltBtn;
+	public WebElement yesDltBtn;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement expenseEditBtn;
+	public WebElement expenseEditBtn;
 	@FindBy(xpath="//button[text()='Submit']")
-	WebElement expenseSubmitEditBtn;
+	public WebElement expenseSubmitEditBtn;
 	
 	public ExpensePage(WebDriver driver) {
 		this.driver=driver;

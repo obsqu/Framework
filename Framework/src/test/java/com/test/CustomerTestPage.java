@@ -17,6 +17,7 @@ import com.pages.HomePage;
 import com.pages.LoginPage;
 import com.pages.WaiterPage;
 import com.utilities.BrowserUtils;
+import com.utilities.ExcelUtils;
 import com.utilities.PropertyUtil;
 import com.utilities.WaitUtils;
 import com.utilities.WebElementUtils;
@@ -32,12 +33,13 @@ public class CustomerTestPage extends AutomationBase{
 	SoftAssert soft=new SoftAssert();
 	PropertyUtil property=new PropertyUtil();
 	WaitUtils waitutil=new WaitUtils();
-	
+	ExcelUtils excelutil;
 	CommonDatas common=new CommonDatas();
 	
 	@BeforeMethod
 	public void preRun() throws IOException
 	{
+		excelutil= new ExcelUtils("RestaurantDatas.xlsx");
        driver=getDriver();
 		
 		Properties allProp=property.getAllProperties("config.properties");
@@ -52,32 +54,56 @@ public class CustomerTestPage extends AutomationBase{
 			
 	}
 	
-	@Test(priority=1,enabled=true)
+   @Test(priority=1,enabled=true)
+	
+	public void validateElementsonAddProduct()
+	{
+		custmpg.ClickOnAddButton();
+		waitutil.waitForElementToBeClickable(driver,custmpg.customerName,20);
+		
+		soft.assertTrue(custmpg.isCustomerNameDisplayed(),"Failure Message: CustomerName is not displayed");
+		soft.assertTrue(custmpg.isCustomerEmailDisplayed(),"Failure Message: CustomerEmail is not displayed");
+		soft.assertTrue(custmpg.isCustomerPhoneDisplayed(),"Failure Message: Customerphone is not displayed");
+		soft.assertTrue(custmpg.isCustomerDiscountDisplayed(),"Failure Message: CustomerDiscount is not displayed");
+		
+		custmpg.clickOnCloseCustomerButton();
+		soft.assertAll();
+		
+	}	
+	
+	@Test(priority=2,enabled=true)
 	public void validateAddCustomerDetails() throws Exception {
 		
 		//common.ClickOnAddButton();
+		String custmrenm=excelutil.readStringData("Customer",2,1);
+		String custmrphone=excelutil.readStringData("Customer",2,2);
+		String custmremail=excelutil.readStringData("Customer",2,3);
+		String custmrdiscnt=excelutil.readStringData("Customer",2,4);
+		
 		custmpg.ClickOnAddButton();
 		
 		custmpg.clickOnCustomername();
-		waitutil.waitForAnElement(driver,By.xpath("//input[@id='CustomerName']"), 10);
+		waitutil.waitForAnElement(driver,custmpg.customerName, 10);
 		custmpg.clickOnPhoneNumber();
-		custmpg.enterValueForCustomerName("Miraj");
-		waitutil.waitForAnElement(driver,By.xpath("//input[@id='CustomerPhone']"), 10);
-		custmpg.enterValueForCustomerPhoneNumber("7654356789");
-		custmpg.enterValueForCustomerMail("miraj@gmail.com");
-		custmpg.enterValueForCustomerDiscount("10%");
+		custmpg.enterValueForCustomerName(custmrenm);
+		waitutil.waitForAnElement(driver,custmpg.customerPhoneNumber, 10);
+		custmpg.enterValueForCustomerPhoneNumber(custmrphone);
+		custmpg.enterValueForCustomerMail(custmremail);
+		custmpg.enterValueForCustomerDiscount(custmrdiscnt);
 		//common.ClickOnSubmitDetails();
+		
 		custmpg.ClickSubmitCustomerDetails();
-		custmpg.SearchDetails("Miraj");
+		custmpg.SearchDetails("Shahina");
+		
 		//common.ClickOnSearchDetails("Miraj");
-		soft.assertEquals(custmpg.getCustomerNameFromSearchResult(),"Miraj","Failure message : Customer name not matched");
-		soft.assertEquals(custmpg.getCustomerPhoneNumberFromSearchResult(),"7654356789","Failure message : Customer phone not matched");
-		soft.assertEquals(custmpg.getCustomerEmailidFromSearchResult(),"miraj@gmail.com","Failure message : Customer mail not matched");
-		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"10%","Failure message : Customer discount not matched");
+		soft.assertEquals(custmpg.getCustomerNameFromSearchResult(),"Shahina","Failure message : Customer name not matched");
+		soft.assertEquals(custmpg.getCustomerPhoneNumberFromSearchResult(),"982363876","Failure message : Customer phone not matched");
+		soft.assertEquals(custmpg.getCustomerEmailidFromSearchResult(),"shahina@gmail.com","Failure message : Customer mail not matched");
+		soft.assertEquals(custmpg.getCustomerDiscountFromSearchResult(),"20%","Failure message : Customer discount not matched");
 		soft.assertAll();
 	}
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void validateDeleteCustomerData() {
 		
 		custmpg.SearchDetails("Gifty");
@@ -90,10 +116,10 @@ public class CustomerTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void validateEditButtonForCustomer() {
 		
-		custmpg.SearchDetails("Eva");
+		custmpg.SearchDetails("Shibina");
 		//common.ClickOnSearchDetails("Jasmin");
 		custmpg.clickEditCustomerDataButton();
 		custmpg.enterValueForCustomerName("Naseera");

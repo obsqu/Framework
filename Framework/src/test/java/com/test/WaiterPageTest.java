@@ -57,7 +57,24 @@ public class WaiterPageTest extends AutomationBase{
 		
 	}
 	
-	@Test(priority=1,enabled=true)
+   @Test(priority=1,enabled=true)
+	
+	public void validateElementsonAddProduct()
+	{
+		watrpg.ClickOnAddWaiterButton();
+		waitutil.waitForElementToBeClickable(driver,watrpg.waiterName,20);
+		
+		soft.assertTrue(watrpg.isWaiterNameDisplayed(),"Failure Message: WaiterName is not displayed");
+		soft.assertTrue(watrpg.isWaiterPhoneDisplayed(),"Failure Message: WaiterPhone is not displayed");
+		soft.assertTrue(watrpg.isWaiterEmailDisplayed(),"Failure Message: WaiterEmail is not displayed");
+		soft.assertTrue(watrpg.isWaiterStoreDisplayed(),"Failure Message: WaiterStore is not displayed");
+		
+		watrpg.ClickOnCloseWaiterButton();
+		soft.assertAll();
+		
+	}	
+	
+	@Test(priority=2,enabled=true)
 	public void validateAddWaiterDatas() throws Exception {
 		
 		//comon.ClickOnAddButton();
@@ -69,9 +86,9 @@ public class WaiterPageTest extends AutomationBase{
 		String waiterstr=excelutil.readStringData("Waiter",2,4);
 		
 		watrpg.clickOnWaitername();
-		waitutil.waitForAnElement(driver,By.xpath("//input[@id='WaiterName']"), 10);
+		waitutil.waitForAnElement(driver,watrpg.waiterName, 10);
 		watrpg.enterValueForWaiterName(waiternm);
-		waitutil.waitForAnElement(driver,By.xpath("//input[@id='WaiterPhone']"), 10);
+		waitutil.waitForAnElement(driver,watrpg.waiterPhoneNo, 10);
 		watrpg.enterValueForWaiterPhone(waiterphn);
 		watrpg.enterValueForWaiterEmailId(waiteremail);
 		watrpg.selectValueForWaiterStore(waiterstr);
@@ -79,16 +96,16 @@ public class WaiterPageTest extends AutomationBase{
 		//comon.ClickOnSubmitDetails();
 		watrpg.submitWaiterValues();
 		//comon.ClickOnSearchDetails("Shibina");
-		watrpg.searchWaiterLink("Shibina");
+		watrpg.searchWaiterLink("Naseera");
 		
-		soft.assertEquals(watrpg.getWaiterNameFromSearchResult(),"Shibina","Failure message : Waiter name not matched");
-		soft.assertEquals(watrpg.getWaiterPhoneNumberFromSearchResult(),"9857463524","Failure message : Waiter name not matched");
-		soft.assertEquals(watrpg.getWaiterEmailidFromSearchResult(),"shib@gmail.com","Failure message : Waiter name not matched");
+		soft.assertEquals(watrpg.getWaiterNameFromSearchResult(),"Naseera","Failure message : Waiter name not matched");
+		soft.assertEquals(watrpg.getWaiterPhoneNumberFromSearchResult(),"34636379873","Failure message : Waiter name not matched");
+		soft.assertEquals(watrpg.getWaiterEmailidFromSearchResult(),"naseera@gmail.com","Failure message : Waiter name not matched");
 		soft.assertEquals(watrpg.getWaiterStoreFromSearchResult(),"MCDS","Failure message : Waiter name not matched");
 		soft.assertAll();
 	}
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=4,enabled=false)
 	public void validateDeleteWaiterData() {
 		
 		watrpg.searchWaiterLink("shibina");
@@ -98,7 +115,7 @@ public class WaiterPageTest extends AutomationBase{
 		
 	}
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=3,enabled=false)
 	public void validateEditButtonForWaiterDetails() {
 		
 		watrpg.searchWaiterLink("Miraj");

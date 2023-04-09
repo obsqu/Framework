@@ -15,41 +15,42 @@ public class SupplierPage {
 	GenericUtils droputil=new GenericUtils();
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addCustomerBtn;
+	public WebElement addSupplierrBtn;
 	@FindBy(xpath="//button[@class='btn btn-add']")
-	WebElement submitCustomerDetail;
+	public WebElement submitSupplierDetail;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement SearchBtn;
-	
+	public WebElement SearchBtn;
+	@FindBy(xpath="//button[text()='Close']")
+	public WebElement closeSupplierButn;
 		
 	@FindBy(xpath="//input[@name='name']")
-	WebElement suplierName;
+	public WebElement suplierName;
 	@FindBy(xpath="//input[@id='SupplierPhone']")
-	WebElement suplierPhone;
+	public WebElement suplierPhone;
 	@FindBy(xpath="//input[@id='SupplierEmail']")
-	WebElement suplierEmail;
+	public WebElement suplierEmail;
 	@FindBy(xpath="//div[@class='note-editable panel-body']")
-	WebElement suplierNote;
+	public WebElement suplierNote;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement suplrname_searchresult;
+	public WebElement suplrname_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement suplrphonenum_searchresult;
+	public WebElement suplrphonenum_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement suplremail_searchresult;
+	public WebElement suplremail_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement suplircreateddate_searchresult;
+	public WebElement suplircreateddate_searchresult;
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement suplirDeleteBtn;
+	public WebElement suplirDeleteBtn;
 	@FindBy(xpath="//a[text()='Yes, delete it!']")
-	WebElement yesDeleteSuplr;
+	public WebElement yesDeleteSuplr;
 	
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement suplirEditBtn;
+	public WebElement suplirEditBtn;
 	@FindBy(xpath="//button[@class='btn btn-add']")
-	WebElement submitEditBtn;
+	public WebElement submitEditBtn;
 	
 	
 	public  SupplierPage(WebDriver driver)
@@ -57,6 +58,28 @@ public class SupplierPage {
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
+	
+public boolean isSupplierNameDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,suplierName);
+		
+}
+ public boolean isSupplierPhoneDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,suplierPhone);
+		
+}
+ public boolean isSupplierEmailDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,suplierEmail);
+		
+}
+ public boolean isSupplierNoteDisplayed() {
+		
+		return elementutil.isElementDisplayed(driver,suplierNote);
+		
+}
+ 
 	
 	public void clickOnSupplierName() {
 		elementutil.clickonTheElement(driver,suplierName);
@@ -107,13 +130,17 @@ public class SupplierPage {
 	 public void clickEditSubmitBtn() {
 		 elementutil.clickonTheElement(driver,submitEditBtn);
 	 }
+	 public void clickOnCloseSupplierButton()
+		{
+			elementutil.clickonTheElement(driver,closeSupplierButn);
+		}
 	 public void ClickOnAddButton() {
 	 		
-	 		elementutil.clickonTheElement(driver,addCustomerBtn);
+	 		elementutil.clickonTheElement(driver,addSupplierrBtn);
 	 	}
 
 	 	public void ClickOnSubmitDatas() {
-	 		elementutil.clickonTheElement(driver,submitCustomerDetail);
+	 		elementutil.clickonTheElement(driver,submitSupplierDetail);
 	 	}
 	 	public void ClickOnSearchDetails(String value)
 		{

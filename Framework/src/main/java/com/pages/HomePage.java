@@ -175,8 +175,12 @@ public class HomePage {
    
    public ExpenseCategoryPage navigateToExpenseCategoryPage() {
 	   elementutils.clickonTheElement(driver,categorylink);
-	   elementutils.clickonTheElement(driver,prdtCatgrylink);
+	   elementutils.clickonTheElement(driver,expnsCatgrylink);
 	   return new ExpenseCategoryPage(driver);
+   }
+   
+   public LogOutPage navigateToLogoutPage() {
+	   return new LogOutPage(driver);
    }
   
 

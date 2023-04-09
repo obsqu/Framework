@@ -16,47 +16,71 @@ public class CustomerPage {
 	
 	
 	@FindBy(xpath="//input[@id='CustomerName']")
-	WebElement customerName;
+	public WebElement customerName;
 	@FindBy(xpath="//input[@id='CustomerPhone']")
-	WebElement customerPhoneNumber;
+	public WebElement customerPhoneNumber;
 	@FindBy(xpath="//input[@name='email']")
-	WebElement customerEmailId;
+	public WebElement customerEmailId;
 	@FindBy(xpath="//input[@id='CustomerDiscount']")
-	WebElement customerDiscount;
+	public WebElement customerDiscount;
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addCustomerBtn;
+	public WebElement addCustomerBtn;
+	@FindBy(xpath="//button[text()='Close']")
+	public WebElement closeCustomerButn;
 	@FindBy(xpath="//button[@class='btn btn-add']")
-	WebElement submitCustomerDetail;
+	public WebElement submitCustomerDetail;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement SearchBtn;
+	public WebElement SearchBtn;
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement cutomername_searchresult;
+	public WebElement cutomername_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement customerphonenum_searchresult;
-	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement customeremail_searchresult;
+	public WebElement customerphonenum_searchresult;
+    @FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
+    public WebElement customeremail_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement customerdiscount_searchresult;
+	public WebElement customerdiscount_searchresult;
 	
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[1]")
-	WebElement customerDeleteBtn;
+	public WebElement customerDeleteBtn;
 	@FindBy(xpath="//a[text()='Yes, delete it!']")
-	WebElement yesDeleteWaiter;
+	public WebElement yesDeleteWaiter;
 	
 	
 	@FindBy(xpath="(//a[@class='btn btn-default'])[2]")
-	WebElement customrEditBtn;
+	public WebElement customrEditBtn;
 	@FindBy(xpath="//button[@class='btn btn-add']")
-	WebElement submitEditBtn;
+	public WebElement submitEditBtn;
 	
 	public  CustomerPage(WebDriver driver)
 	{
 		this.driver=driver;
 		PageFactory.initElements(driver,this);
 	}
+	
+public boolean isCustomerNameDisplayed() {
+		
+		return elementUtils.isElementDisplayed(driver,customerName);
+		
+}
+ public boolean isCustomerEmailDisplayed() {
+		
+		return elementUtils.isElementDisplayed(driver,customerEmailId);
+		
+}
+ public boolean isCustomerPhoneDisplayed() {
+		
+		return elementUtils.isElementDisplayed(driver,customerPhoneNumber);
+		
+}
+ public boolean isCustomerDiscountDisplayed() {
+		
+		return elementUtils.isElementDisplayed(driver,customerDiscount);
+		
+}
+ 
 	
 	public void clickOnCustomername() {
 		elementUtils.clickonTheElement(driver,customerName);
@@ -121,6 +145,11 @@ public class CustomerPage {
  		
  		elementUtils.clickonTheElement(driver,addCustomerBtn);
  	}
+     public void clickOnCloseCustomerButton()
+ 	{
+ 		elementUtils.clickonTheElement(driver,closeCustomerButn);
+ 	}
+
 
  	public void ClickOnSubmitDatas() {
  		elementUtils.clickonTheElement(driver,submitCustomerDetail);

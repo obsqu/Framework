@@ -55,7 +55,7 @@ public class ProductCategoryTestPage extends AutomationBase{
 			
 	}
 	
-	@Test(priority=1,enabled=false)
+	@Test(priority=1,enabled=true)
 	public void ValidateTheMenuItemsDisplayedAddProductPage()
 	{
 		
@@ -71,12 +71,12 @@ public class ProductCategoryTestPage extends AutomationBase{
 	public void validateAddProductCategoryDetails() throws Exception {
 		
 		//comon.ClickOnAddButton();
-		
+		String catgrynm=excelutil.readStringData("ProductCategory",2,1);
 		pdtctgry.ClickOnAddCategoryButton();
 		pdtctgry.ClickOnCategoryName();
-		//waitutil.waitForAnElement(driver,By.id("//input[@id='CategoryName']"), 10);
 		
-		pdtctgry.enterValueForCategryName("Broasted");
+		
+		pdtctgry.enterValueForCategryName(catgrynm);
 		
         pdtctgry.ClickOnSubmitCategoryValues();
 		
@@ -88,25 +88,25 @@ public class ProductCategoryTestPage extends AutomationBase{
 		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"Broasted","Failure message : category name not matched");
 }
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void validateEditButtonForCategoryDetails() {
 	
-		pdtctgry.ClickOnSearchCategoryLink("Munch");
+		pdtctgry.ClickOnSearchCategoryLink("Pizza");
 		pdtctgry.ClickOnCategoryEditButton();
-		pdtctgry.enterValueForCategryName("Pizza");
+		pdtctgry.enterValueForCategryName("Munch");
 		pdtctgry.ClickOnSubmitEditButton();
 		brwsrUtil.refreshPage(driver);
-		pdtctgry.ClickOnSearchCategoryLink("Pizza");
-		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"Pizza","Failure message : category name not matched");
+		pdtctgry.ClickOnSearchCategoryLink("Munch");
+		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"Munch","Failure message : category name not matched");
 	}	
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void validateDeleteWaiterData() {
 		
-		pdtctgry.ClickOnSearchCategoryLink("burger");
+		pdtctgry.ClickOnSearchCategoryLink("lemon");
 		pdtctgry.ClickOnDeleteButton();
-		//brwsrUtil.refreshPage(driver);
-		pdtctgry.ClickOnSearchCategoryLink("burger");
+		
+		pdtctgry.ClickOnSearchCategoryLink("lemon");
 		Assert.assertEquals(pdtctgry.getCategryNameFromSearchResult(),"No matching records found","Failure message : category name not matched");
 		
 	}

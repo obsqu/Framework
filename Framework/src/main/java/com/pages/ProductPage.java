@@ -15,112 +15,112 @@ public class ProductPage {
 	GenericUtils droputil=new GenericUtils();
 	
 	@FindBy(xpath="//span[text()='Product']")
-	WebElement productlink;
+	public WebElement productlink;
 	@FindBy(xpath="//input[@class='form-control input-sm']")
-	WebElement pdtSearch;
+	public WebElement pdtSearch;
 	
 	@FindBy(xpath="//button[@class='btn btn-add btn-lg']")
-	WebElement addpdt;
+	public WebElement addpdt;
 		
 	@FindBy(xpath="//select[@id='Type']")
-	WebElement pdtype;
+	public WebElement pdtype;
 	@FindBy(xpath="//input[@id='ProductCode']")
-	WebElement pdtcode;
+	public WebElement pdtcode;
 	@FindBy(xpath="//input[@id='ProductName']")
-	WebElement pdtname;
+	public WebElement pdtname;
 	@FindBy(xpath="//select[@id='Category']")
-	WebElement pdtcategory;
+	public WebElement pdtcategory;
 	@FindBy(xpath="//select[@name='supplier']")
-	WebElement pdtsupplier;
+	public WebElement pdtsupplier;
 	@FindBy(xpath="//input[@id='PurchasePrice']")
-	WebElement pdtpurchsprice;
+	public WebElement pdtpurchsprice;
 	@FindBy(xpath="//input[@id='Tax']")
-	WebElement pdttax;
+	public WebElement pdttax;
 	@FindBy(xpath="//select[@id='taxType']")
-	WebElement pdttaxmethod;
+	public WebElement pdttaxmethod;
 	@FindBy(xpath="//input[@id='Price']")
-	WebElement pdtprice;
+	public WebElement pdtprice;
 	@FindBy(xpath="//input[@id='Unit']")
-	WebElement pdtunit;
+	public WebElement pdtunit;
 	@FindBy(xpath="//input[@id='AlertQt']")
-	WebElement pdtalertqty;
+	public WebElement pdtalertqty;
 	@FindBy(xpath="//textarea[@id='ProductOptions']")
-	WebElement pdtoptin;
+	public WebElement pdtoptin;
 	@FindBy(xpath="//input[@name='userfile']")
-	WebElement pdtimage;
+	public WebElement pdtimage;
 	@FindBy(xpath="//div[@class='note-editable panel-body']")
-	WebElement pdtDescription;
+	public WebElement pdtDescription;
 	@FindBy(xpath="//label[@class='btn color02 active']")
-	WebElement pdtColor;
+	public WebElement pdtColor;
 	@FindBy(xpath="(//button[@class='btn btn-add'])[1]")
-	WebElement pdtsubmit;
+	public WebElement pdtsubmit;
 	@FindBy(xpath="(//button[@class='btn btn-default'])[3]")
-	WebElement pdtclose;
+	public WebElement pdtclose;
 	
 	
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[1]")
-	WebElement productcode_searchresult;
+	public WebElement productcode_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[2]")
-	WebElement productname_searchresult;
+	public WebElement productname_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[3]")
-	WebElement productcategory_searchresult;
+	public WebElement productcategory_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[4]")
-	WebElement productdescription_searchresult;
+	public WebElement productdescription_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[5]")
-	WebElement producttax_searchresult;
+	public WebElement producttax_searchresult;
 	@FindBy(xpath="(//table[@id='Table']//tr//td)[6]")
-	WebElement productprice_searchresult;
+	public WebElement productprice_searchresult;
 	@FindBy(xpath="(//input[@id='quantity'])[1]")
-	WebElement MNCstoreQuantity;
+	public WebElement MNCstoreQuantity;
 	@FindBy(xpath="(//input[@id='pricestr'])[1]")
-	WebElement MNCstorePrice;
+	public WebElement MNCstorePrice;
 	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'])[2]")
-	WebElement storeSubmitonProduct;
+	public WebElement storeSubmitonProduct;
 	@FindBy(xpath="(//button[@class='btn btn-default hiddenpr'])[2]")
-	WebElement storeCloseonProduct;
+	public WebElement storeCloseonProduct;
 	
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][1]")
-	WebElement crossButn;
+	public WebElement crossButn;
 	@FindBy(xpath="//a[@class='btn btn-danger']")
-	WebElement deleteButn;
+	public WebElement deleteButn;
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][2]")
-	WebElement viewButn;
+	public WebElement viewButn;
 	@FindBy(xpath="(//button[@class='btn btn-default hiddenpr'])[3]")
-	WebElement closeOnView;
+	public WebElement closeOnView;
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][3]")
-	WebElement editButn;
+	public WebElement editButn;
 	@FindBy(xpath="//button[@class='btn btn-default float-right']")
-	WebElement backOnEdit;
+	public WebElement backOnEdit;
 	@FindBy(xpath="//button[@class='btn btn-green col-md-6 flat-box-btn waves-effect waves-button']")
-	WebElement submitOnEdit;
+	public WebElement submitOnEdit;
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][4]")
-	WebElement modifyButn;
+	public WebElement modifyButn;
 	
 	@FindBy(xpath="//a[@class='btn btn-default'][5]")
-	WebElement barcodePrintBtn;
+	public WebElement barcodePrintBtn;
 	@FindBy(xpath="//select[@id='Brrows']")
-	WebElement colmnNumberOnBarcod;
+	public WebElement colmnNumberOnBarcod;
 	@FindBy(xpath="//input[@id='Brnum']")
-	WebElement NumberOnBarcod;
+	public WebElement NumberOnBarcod;
 	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'])[3]")
-	WebElement submitOnBarcode;
+	public WebElement submitOnBarcode;
 	@FindBy(xpath="(//button[@class='btn btn-add hiddenpr'])[4]")
-	WebElement printOnBarcode;
+	public WebElement printOnBarcode;
 	@FindBy(xpath="//span[text()='Print']")
-	WebElement printData;
+	public WebElement printData;
 	@FindBy(xpath="//span[text()='Cancel']")
-	WebElement cancelPrintData;
+	public WebElement cancelPrintData;
 	
 	@FindBy(xpath="(//a[@class='btn btn-add btn-xs'])[1]")
-	WebElement downloadCSv;
+	public WebElement downloadCSv;
 	@FindBy(xpath="(//a[@class='btn btn-add btn-xs'])[2]")
-	WebElement uploadCSv;
+	public WebElement uploadCSv;
 	@FindBy(xpath="//a[@class='btn btn-red btn-xs']")
-	WebElement printMenu;
+	public WebElement printMenu;
 	
 	public  ProductPage(WebDriver driver)
 	{
@@ -222,7 +222,7 @@ public class ProductPage {
 	 public void selectProductType(String pdtTypeValue)
 		{
 			elementutil.cleartheFieldd(driver,pdtype);
-			droputil.elememtSelectbyValue(driver,pdtype,pdtTypeValue);
+			droputil.elememtSelectbyVisibleText(driver,pdtype,pdtTypeValue);
 		}
 		public void addProductCode(String pdtCodeValue)
 		{
@@ -257,7 +257,7 @@ public class ProductPage {
 		public void selectProductTaxMethod(String pdttaxmthdValue)
 		{
 			elementutil.cleartheFieldd(driver,pdttaxmethod);
-			droputil.elememtSelectbyValue(driver,pdttaxmethod,pdttaxmthdValue);
+			droputil.elememtSelectbyVisibleText(driver,pdttaxmethod,pdttaxmthdValue);
 		}
 		public void addProductPrice(String pdtPriceValue)
 		{
@@ -284,79 +284,7 @@ public class ProductPage {
 			elementutil.cleartheFieldd(driver,pdtDescription);
 			elementutil.enteringValuetoElements(driver,pdtDescription, pdtDescripValue);
 		}
-	/*public void selectProductType(String pdtypeVal)
-	{
-		
-		droputil.elememtSelectbyValue(driver, pdtype,pdtypeVal);
-	}
 	
-	public void enterProductCode(String pdtcodeVal)
-	{
-		elementutil.enteringValuetoElements(driver,pdtcode,pdtcodeVal);
-		
-	}
-	
-	public void enterProductName(String pdtnameVal)
-	{
-		elementutil.enteringValuetoElements(driver,pdtname,pdtnameVal);
-	}
-	
-	public void selectProductCategory(String pdCategoryVal)
-	{
-		droputil.elememtSelectbyValue(driver,pdtcategory,pdCategoryVal);
-	}
-	
-	public void selectProductSupplier(String pdSupplierVal)
-	{
-		droputil.elememtSelectbyValue(driver,pdtsupplier, pdSupplierVal);
-	}
-	
-	public void enterProductPurchasePrice(String purchPriceVal)
-	{
-		elementutil.cleartheFieldd(driver,pdtpurchsprice);
-		
-		elementutil.enteringValuetoElements(driver,pdtpurchsprice,purchPriceVal);
-	}
-	
-	public void enterProductTax(String pdTaxVal)
-	{
-		elementutil.enteringValuetoElements(driver,pdttax,pdTaxVal);
-	}
-	
-	public void selectPrdtTaxmethod(String taxMethodVal)
-	{
-		droputil.elememtSelectbyValue(driver,pdttaxmethod,taxMethodVal);
-	}
-	
-	public void enterProductPrice(String pdPriceVal)
-	{
-		
-		elementutil.enteringValuetoElements(driver,pdtprice,pdPriceVal);
-	}
-	
-	public void enterProductUnit(String pdUnitVal)
-	{
-		elementutil.enteringValuetoElements(driver,pdtunit,pdUnitVal);
-	}
-	
-	public void enterAlertQuantity(String AlertQtyVal)
-	{
-		elementutil.cleartheFieldd(driver, pdtalertqty);
-		elementutil.enteringValuetoElements(driver, pdtalertqty, AlertQtyVal);
-	}
-	
-	public void enterProductOption(String pdOptionVal)
-	{
-		elementutil.enteringValuetoElements(driver,pdtoptin,pdOptionVal);
-	}
-	public void inputProductImage(String imgUrl)
-	{
-		elementutil.enteringValuetoElements(driver,pdtimage,imgUrl);
-	}
-	public void enterProductDescription(String pdtDecrip)
-	{
-		elementutil.enteringValuetoElements(driver,pdtDescription,pdtDecrip);
-	}*/
 	
 	public void submitProductDetails()
 	{
