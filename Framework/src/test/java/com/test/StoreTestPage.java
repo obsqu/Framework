@@ -43,7 +43,7 @@ public class StoreTestPage extends AutomationBase{
 		String site=allProp.getProperty("url");
 		brwsrUtil.launchUrl(driver,site);
 		
-		waitutil.implicitWait(driver,30);
+		//waitutil.implicitWait(driver,30);
 		
 		loginpg=new LoginPage(driver);
 		homepg=new HomePage(driver);

@@ -79,7 +79,7 @@ public class AutomationBase {
 		}
 	}
 
-	public  WebDriver getDriver() {
+	public static  WebDriver getDriver() {
 		
 		return driver;
 	}

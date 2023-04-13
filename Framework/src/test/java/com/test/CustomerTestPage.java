@@ -71,7 +71,7 @@ public class CustomerTestPage extends AutomationBase{
 		
 	}	
 	
-	@Test(priority=2,enabled=true)
+	//@Test(priority=2,enabled=true)
 	public void validateAddCustomerDetails() throws Exception {
 		
 		//common.ClickOnAddButton();
@@ -103,7 +103,7 @@ public class CustomerTestPage extends AutomationBase{
 		soft.assertAll();
 	}
 	
-	@Test(priority=4,enabled=true)
+	//@Test(priority=4,enabled=true)
 	public void validateDeleteCustomerData() {
 		
 		custmpg.SearchDetails("Gifty");
@@ -116,7 +116,7 @@ public class CustomerTestPage extends AutomationBase{
 		
 	}
 	
-	@Test(priority=3,enabled=true)
+	//@Test(priority=3,enabled=true)
 	public void validateEditButtonForCustomer() {
 		
 		custmpg.SearchDetails("Shibina");

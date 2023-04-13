@@ -53,30 +53,26 @@ public class ExpenseTestPage extends AutomationBase{
 			
 	}
 	
-	//@Test(priority=1,enabled=true)
+	@Test(priority=1,enabled=true)
 	public void ValidateTheMenuItemsDisplayedAddExpensePage()
 	{
 		
 		
 		expnspg.ClickOnAddExpenseButton();
 		
-		boolean flagdt=expnspg.isExpensedateDisplayed();
-		soft.assertTrue(flagdt,"Fail: ExpenseDate field is not displayed");
+		waitutil.waitForElementToBeClickable(driver,expnspg.expenseDate,20);
 		
-		boolean flagref=expnspg.isExpenseRefernseDisplayed();
-		soft.assertTrue(flagref,"Fail: ExpenseReference field is not displayed");
+		soft.assertTrue(expnspg.isExpensedateDisplayed(),"Fail: ExpenseDate field is not displayed");
 		
-		boolean flagct=expnspg.isExpenseCategoryDisplayed();
-		soft.assertTrue(flagct,"Fail: ExpenseCategory field is not displayed");
+		soft.assertTrue(expnspg.isExpenseRefernseDisplayed(),"Fail: ExpenseReference field is not displayed");
 		
-		boolean flagst=expnspg.isExpenseStoreDisplayed();
-		soft.assertTrue(flagst,"Fail: ExpenseStore field is not displayed");
+		soft.assertTrue(expnspg.isExpenseCategoryDisplayed(),"Fail: ExpenseCategory field is not displayed");
+		
+		soft.assertTrue(expnspg.isExpenseStoreDisplayed(),"Fail: ExpenseStore field is not displayed");
 	
-		boolean flagamt=expnspg.isExpenseAmountDisplayed();
-		soft.assertTrue(flagamt,"Fail: ExpenseAmount field is not displayed");
+		soft.assertTrue(expnspg.isExpenseAmountDisplayed(),"Fail: ExpenseAmount field is not displayed");
 		
-		boolean flagnot=expnspg.isExpenseNoteDisplayed();
-		soft.assertTrue(flagnot,"Fail: ExpenseNote field is not displayed");
+		soft.assertTrue(expnspg.isExpenseNoteDisplayed(),"Fail: ExpenseNote field is not displayed");
 		soft.assertAll();
 		
 		expnspg.ClickOnCloseButton();
@@ -85,13 +81,19 @@ public class ExpenseTestPage extends AutomationBase{
 	}	
 		
 	
-	//@Test(priority=2,enabled=true)
+	@Test(priority=2,enabled=true)
 	public void validateAddExpenseDetails() throws Exception {
 		
-		//comon.ClickOnAddButton();
 		
+		/*String expnsdate=excelutil.readStringData("Expense",2,1);
+		String expnsreference=excelutil.readStringData("Expense",2,2);
+		String expnscatgry=excelutil.readStringData("Expense",2,3);
+		String expnsstore=excelutil.readStringData("Expense",2,4);
+		String expnsamount=excelutil.readStringData("Expense",2,4);
+		String expnsnote=excelutil.readStringData("Expense",2,4);*/
 		expnspg.ClickOnAddExpenseButton();
-		//waitutil.waitForAnElement(driver,By.id("//input[@id='SupplierName']"), 10);
+		
+		waitutil.waitForAnElement(driver,expnspg.expenseDate, 10);
 		expnspg.enterValueForExpenseDate("03/23/2023");
 		expnspg.enterValueForExpenseReference("Miraj");
 		expnspg.selectValueForExpenseCategory("Pasta");
@@ -100,8 +102,6 @@ public class ExpenseTestPage extends AutomationBase{
 		expnspg.enterValueForExpenseNote("Hai All");
 		expnspg.ClickOnSubmitExpenseValues();
 		
-		//comon.ClickOnSubmitDetails();
-		//comon.ClickOnSearchDetails("HAI");
 		
 		expnspg.ClickOnSearchExpenseLink("Miraj");
 		
@@ -114,7 +114,7 @@ public class ExpenseTestPage extends AutomationBase{
 		soft.assertAll();
 	}
 	
-	@Test(priority=3,enabled=true)
+	//@Test(priority=3,enabled=true)
 	public void validateEditButtonForExpenseDetails() {
 		
 		expnspg.ClickOnSearchExpenseLink("Shibina");

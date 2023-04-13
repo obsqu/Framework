@@ -10,6 +10,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -74,24 +75,21 @@ public class WaiterPageTest extends AutomationBase{
 		
 	}	
 	
-	@Test(priority=2,enabled=true)
-	public void validateAddWaiterDatas() throws Exception {
+	@Test(priority=2,enabled=true,dataProvider="waiterdatas")
+	public void validateAddWaiterDatas(String name,String phone,String mail,String store) throws Exception {
 		
-		//comon.ClickOnAddButton();
+		
 		watrpg.ClickOnAddWaiterButton();
 		
-		String waiternm=excelutil.readStringData("Waiter",2,1);
-		String waiterphn=excelutil.readStringData("Waiter",2,2);
-		String waiteremail=excelutil.readStringData("Waiter",2,3);
-		String waiterstr=excelutil.readStringData("Waiter",2,4);
+		
 		
 		watrpg.clickOnWaitername();
 		waitutil.waitForAnElement(driver,watrpg.waiterName, 10);
-		watrpg.enterValueForWaiterName(waiternm);
+		watrpg.enterValueForWaiterName(name);
 		waitutil.waitForAnElement(driver,watrpg.waiterPhoneNo, 10);
-		watrpg.enterValueForWaiterPhone(waiterphn);
-		watrpg.enterValueForWaiterEmailId(waiteremail);
-		watrpg.selectValueForWaiterStore(waiterstr);
+		watrpg.enterValueForWaiterPhone(phone);
+		watrpg.enterValueForWaiterEmailId(mail);
+		watrpg.selectValueForWaiterStore(store);
 		
 		//comon.ClickOnSubmitDetails();
 		watrpg.submitWaiterValues();
@@ -133,6 +131,29 @@ public class WaiterPageTest extends AutomationBase{
 		soft.assertEquals(watrpg.getWaiterEmailidFromSearchResult(),"shibi@gmail.com","Failure message : Waiter name not matched");
 		soft.assertEquals(watrpg.getWaiterStoreFromSearchResult(),"MNC","Failure message : Waiter name not matched");
 		soft.assertAll();
+	}
+	
+	@DataProvider(name="waiterdatas")
+	public Object[][] testdata(){
+		
+		Object[][] data=new Object[3][4];
+		data[0][0]="Anas";
+		data[0][1]="9876524256";
+		data[0][2]="anas@gmail.com";
+		data[0][3]="MNC";
+		
+		data[1][0]="naseera";
+		data[1][1]="8326524256";
+		data[1][2]="naseera@gmail.com";
+		data[1][3]="MNC";
+		
+		data[2][0]="shahina";
+		data[2][1]="7624524256";
+		data[2][2]="shahina@gmail.com";
+		data[2][3]="MNC";
+		
+		return data;
+		
 	}
 
 		

@@ -68,42 +68,42 @@ public class ExpensePage {
 	
 	public boolean isExpensedateDisplayed()
 	{
-		boolean flag= elementutil.isElementDisplayed(driver,expenseDate);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseDate);
+		
 	}
 	
 	public boolean isExpenseRefernseDisplayed()
 	{
 		
-		boolean flag=elementutil.isElementDisplayed(driver,expenseReference);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseReference);
+		
 	}
 	
 	public boolean isExpenseCategoryDisplayed()
 	{
 		
-		boolean flag= elementutil.isElementDisplayed(driver,expenseCatgry);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseCatgry);
+		
 	}
 	
 	public boolean isExpenseStoreDisplayed()
 	{
 		
-		boolean flag= elementutil.isElementDisplayed(driver,expenseStr);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseStr);
+		
 	}
 	
 	public boolean isExpenseAmountDisplayed()
 	{
 			
-		boolean flag=elementutil.isElementDisplayed(driver,expenseAmount);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseAmount);
+		
 	}
 	public boolean isExpenseNoteDisplayed()
 	{
 		
-		boolean flag= elementutil.isElementDisplayed(driver,expenseNote);
-		return flag;
+		return elementutil.isElementDisplayed(driver,expenseNote);
+		
 	}
 	
 	public void ClickOnCloseButton()
