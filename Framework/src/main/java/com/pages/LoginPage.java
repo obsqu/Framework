@@ -42,6 +42,12 @@ public class LoginPage {
 		elementutil.clickonTheElement(driver,submit);
 	}
 	
+	public void performlogin(String usernames,String passwords) {
+		enterValuetoUsername(usernames);
+		enterValuetoPassword(passwords);
+		clickLoginButton();
+	}
+	
 	public HomePage login(String usernames,String passwords)
 	{
 	enterValuetoUsername(usernames);

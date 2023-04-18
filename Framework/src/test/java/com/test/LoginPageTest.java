@@ -21,34 +21,20 @@ public class LoginPageTest extends AutomationBase{
 	WebDriver driver;
 	LoginPage loginpg;
 	HomePage homepg;
-	BrowserUtils brwsrUtil=new BrowserUtils();
-	WebElementUtils elementutil=new WebElementUtils();
 	
-	PropertyUtil property=new PropertyUtil();
+	Properties prop;
+	PropertyUtil property;
 	
-	@BeforeMethod
-	public void preRun() throws IOException
+	
+	@Test(priority=1,enabled=true)
+	public void validateLogin() throws IOException
 	{
 		driver=getDriver();
-		
-		Properties allProp=property.getAllProperties("config.properties");
-		String site=allProp.getProperty("url");
-		brwsrUtil.launchUrl(driver,site);
-		
-		
 		loginpg=new LoginPage(driver);
-		homepg=new HomePage(driver);
-		
-		
-	}
-	@Test(priority=1,enabled=true)
-	public void validateLogin()
-	{
-		loginpg.enterValuetoUsername("admin");
-		loginpg.enterValuetoPassword("password");
-		loginpg.clickLoginButton();
-		
-		
+		property=new PropertyUtil();
+		prop=property.getAllProperties("config.properties");
+		loginpg.performlogin(prop.getProperty("username"),prop.getProperty("password"));
+				
 		Assert.assertTrue(homepg.isPosDisplayed(),"Failure : Login failed");
 	}
 	
