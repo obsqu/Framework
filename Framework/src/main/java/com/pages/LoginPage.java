@@ -37,9 +37,9 @@ public class LoginPage {
 		elementutil.clickonTheElement(driver, submit);
 	}
 
-	public void performlogin(String usernames, String passwords) {
-		enterValuetoUsername(usernames);
-		enterValuetoPassword(passwords);
+	public void performlogin(String username, String password) {
+		enterValuetoUsername(username);
+		enterValuetoPassword(password);
 		clickLoginButton();
 	}
 

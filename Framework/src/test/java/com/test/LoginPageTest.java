@@ -21,7 +21,6 @@ public class LoginPageTest extends AutomationBase{
 	WebDriver driver;
 	LoginPage loginpg;
 	HomePage homepg;
-	
 	Properties prop;
 	PropertyUtil property;
 	
@@ -31,6 +30,7 @@ public class LoginPageTest extends AutomationBase{
 	{
 		driver=getDriver();
 		loginpg=new LoginPage(driver);
+		homepg=new HomePage(driver);
 		property=new PropertyUtil();
 		prop=property.getAllProperties("config.properties");
 		loginpg.performlogin(prop.getProperty("username"),prop.getProperty("password"));

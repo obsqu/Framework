@@ -1,6 +1,8 @@
 package com.test;
 
 import java.io.IOException;
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,22 +20,16 @@ public class HomePageTest extends AutomationBase {
 	WebDriver driver;
 	LoginPage loginpg;
 	HomePage homepg;
-	BrowserUtils brwsrUtil = new BrowserUtils();
-	WebElementUtils elementutil = new WebElementUtils();
-	PropertyUtil property = new PropertyUtil();
-	WaitUtils waitutil = new WaitUtils();
+	PropertyUtil property;
+	Properties prop;
 
 	@BeforeMethod
 	public void preRun() throws IOException {
-
 		driver = getDriver();
-
-		homepg = new HomePage(driver);
-
-		brwsrUtil.launchUrl(driver, "https://qalegend.com/restaurant/");
-		// waitutil.implicitWait(driver,30);
 		loginpg = new LoginPage(driver);
-		homepg = loginpg.login("admin", "password");
+		property=new PropertyUtil();
+		prop=property.getAllProperties("config.properties");
+		homepg = loginpg.login(prop.getProperty("username"),prop.getProperty("password"));
 	}
 
 	@Test(priority = 1, enabled = true)

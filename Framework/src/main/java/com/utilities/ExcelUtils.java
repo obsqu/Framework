@@ -1,5 +1,7 @@
 package com.utilities;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -9,17 +11,23 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelUtils {
 	
-	public static final String currentDir=System.getProperty("user.dir");
-	public static String filePath=currentDir+"/src/test/resources/";
-	static String excelPath;
-	
+	 final static  String currentDir=System.getProperty("user.dir");
+	 static String filePath=currentDir+".//src/test//resources//RestaurantDatas.xlsx";
 	static XSSFWorkbook workbook;
 	static XSSFSheet sheet;
+	static FileInputStream fs;
+	File file=new File(filePath);
 	
-	public ExcelUtils(String fileName) throws IOException
+	public ExcelUtils() throws IOException
 	{
-		excelPath=filePath+fileName;
-		workbook=new XSSFWorkbook(excelPath);
+		//excelPath=filePath+fileName;
+		//File file=new File(excelPath);
+		//fs=new FileInputStream(file);
+		try {
+			workbook=new XSSFWorkbook(filePath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		sheet=(XSSFSheet)workbook.getSheetAt(0);
 	}
 	
@@ -61,14 +69,16 @@ public class ExcelUtils {
 	 */
 	public  String readStringData(String sheetname,int rowNum,int colNum) throws IOException
 	{
+		String cellValue=sheet.getRow(rowNum-1).getCell(colNum-1).getStringCellValue();
+		return cellValue;
 		
-		
-		workbook=new XSSFWorkbook(excelPath);
+		/*workbook=new XSSFWorkbook(fs);
 		sheet=workbook.getSheet(sheetname);
+		sheet=workbook.getSheetAt(0);
 		Row row=sheet.getRow(rowNum);
 		Cell c=row.getCell(colNum);
-		
-		return c.getStringCellValue();
+		System.out.println("**************"+c.getStringCellValue());
+		return c.getStringCellValue();*/
 	}
 	
 	/**This method is to read integer datas from excel sheet
@@ -80,9 +90,8 @@ public class ExcelUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public  int readIntegerData(String fileName,int rowNum,int colNum,String sheetname) throws IOException {
-		String excelPath=filePath+fileName;
-		workbook=new XSSFWorkbook(excelPath);
+	public  int readIntegerData(int rowNum,int colNum,String sheetname) throws IOException {
+		workbook=new XSSFWorkbook(fs);
 		sheet=workbook.getSheet(sheetname);
 		Row row=sheet.getRow(rowNum);
 		Cell c=row.getCell(colNum);

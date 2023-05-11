@@ -39,7 +39,7 @@ public class ExpenseCategoryTestPage extends AutomationBase{
 	@BeforeMethod
 	public void preRun() throws IOException
 	{
-		excelutil=new ExcelUtils("RestaurantDatas.xlsx");
+		excelutil=new ExcelUtils();
        driver=getDriver();
 		
 		Properties allProp=property.getAllProperties("config.properties");

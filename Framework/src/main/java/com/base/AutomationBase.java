@@ -1,6 +1,5 @@
 package com.base;
 
-import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -23,16 +22,21 @@ public class AutomationBase {
 	BrowserUtils brwsrUtil;
 	LoginPage loginpg;
 	PropertyUtil property;
+	Properties allProp;
+	
 	
 @BeforeTest
-public void prerun() throws IOException
+@Parameters("browserName")
+public void preLaunch(String browserName) throws Exception
 {
+	launchBrowser(browserName);
 	loginpg=new LoginPage(driver);
 	brwsrUtil=new BrowserUtils();
-	Properties allProp=property.getAllProperties("config.properties");
+	property=new PropertyUtil();
+	allProp=property.getAllProperties("config.properties");
 	brwsrUtil.launchUrl(driver,allProp.getProperty("url"));
 }
-@Parameters("browserName")
+
 	public void launchBrowser(String browserName) throws Exception
 	{
 		switch(browserName)
@@ -52,7 +56,7 @@ public void prerun() throws IOException
 			//System.out.println(AutomationConsttants.CHECKBROWSER_MESSAGE);
 			break;
 		}
-		return driver;
+		
 	}
 	
 	private void launchChromeBrowser() throws Exception
